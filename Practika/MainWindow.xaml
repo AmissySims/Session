@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <Rectangle  Fill="#FFB5D5CA"></Rectangle>
         <Image Source="/Resourses\logo.png" HorizontalAlignment="Left" Width="47"></Image>
-        <TextBlock x:Name="TitlePage" Style="{StaticResource Text}" Height="22" Width="170" >Компания доставки ""</TextBlock>
-        <Button  x:Name="BackBtn" Style="{StaticResource MyButton }" HorizontalAlignment="Left" Margin="649,0,0,0" Content="Назад" Height="22" Width="41"/>
-        <Button x:Name="ExitBtn"  Style="{StaticResource MyButton }" HorizontalAlignment="Left" Margin="744,0,0,0" Content="Выход" Height="22" Width="46"/>
+        <TextBlock x:Name="TitlePage" Style="{StaticResource Text}" Height="22" Width="170" >Компания доставки</TextBlock>
+        <Button  x:Name="BackBtn" Style="{StaticResource MyButton }" HorizontalAlignment="Left" Margin="644 0 0 0" Content="Назад" Height="22"/>
+        <Button x:Name="ExitBtn"  Style="{StaticResource MyButton }" HorizontalAlignment="Left" Margin="744 0 0 0" Content="Выход" Height="22"/>
         <Rectangle Grid.Row="2" Fill="#FFE0A9AF"></Rectangle>
-        <Frame x:Name="MyFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

@@ -18,7 +18,6 @@ namespace Practika.Components
         public Order()
         {
             this.ProductOrder = new HashSet<ProductOrder>();
-            this.Shipment = new HashSet<Shipment>();
         }
     
         public int Id { get; set; }
@@ -32,7 +31,5 @@ namespace Practika.Components
         public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shipment> Shipment { get; set; }
     }
 }

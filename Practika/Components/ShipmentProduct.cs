@@ -12,18 +12,13 @@ namespace Practika.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Shipment
+    public partial class ShipmentProduct
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shipment()
-        {
-            this.ShipmentProduct = new HashSet<ShipmentProduct>();
-        }
+        public int ShipmentId { get; set; }
+        public int ProductId { get; set; }
+        public Nullable<int> Quanity { get; set; }
     
-        public int Id { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShipmentProduct> ShipmentProduct { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Shipment Shipment { get; set; }
     }
 }

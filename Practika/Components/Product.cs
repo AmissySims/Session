@@ -18,6 +18,7 @@ namespace Practika.Components
         public Product()
         {
             this.ProductOrder = new HashSet<ProductOrder>();
+            this.ShipmentProduct = new HashSet<ShipmentProduct>();
             this.SuppliersCountry = new HashSet<SuppliersCountry>();
         }
     
@@ -33,6 +34,8 @@ namespace Practika.Components
         public virtual UnitOfMeansurement UnitOfMeansurement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShipmentProduct> ShipmentProduct { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuppliersCountry> SuppliersCountry { get; set; }
     }

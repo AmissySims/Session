@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Practika.Components;
+using Practika.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,8 @@ namespace Practika
         public MainWindow()
         {
             InitializeComponent();
+            Navigation.main = this;
+            Navigation.ChangePage(new Nav("Авторизация", new AuthPage()));
         }
     }
 }

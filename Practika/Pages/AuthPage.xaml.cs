@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practika.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace Practika.Pages
         public AuthPage()
         {
             InitializeComponent();
+        }
+
+        private void EntrBtn_Click(object sender, RoutedEventArgs e)
+        {
+            User user = DBConnect.db.User.Local.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
+            
+            if (user == null)
+            {
+                MessageBox.Show("Логин или пароль неверный");
+                return;
+            }
+
+            Navigation.User = user;
+
+            Navigation.ChangePage(new Nav("Регистрация", new RegPage()));
+        }
+
+        private void RegisBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.ChangePage(new Nav("Регистрация", new RegPage()));
         }
     }
 }
