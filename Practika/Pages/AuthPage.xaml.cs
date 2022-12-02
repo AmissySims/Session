@@ -38,12 +38,12 @@ namespace Practika.Pages
 
             Navigation.User = user;
 
-            Navigation.ChangePage(new Nav("Регистрация", new RegPage()));
+            Navigation.NextPage(new Nav("Регистрация", new RegPage()));
         }
 
         private void RegisBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.ChangePage(new Nav("Регистрация", new RegPage()));
+            Navigation.NextPage(new Nav("Регистрация", new RegPage()));
         }
     }
 }

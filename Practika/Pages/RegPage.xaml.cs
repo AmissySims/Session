@@ -29,7 +29,7 @@ namespace Practika.Pages
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            Navigation.ChangePage(new Nav("Авторизация", new AuthPage()));
+            Navigation.BackPage();
         }
 
         private void RegistBtn_Click(object sender, RoutedEventArgs e)
