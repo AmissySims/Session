@@ -28,5 +28,15 @@ namespace Practika
             Navigation.main = this;
             Navigation.ChangePage(new Nav("Авторизация", new AuthPage()));
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
