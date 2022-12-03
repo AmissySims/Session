@@ -48,8 +48,9 @@
         <ListView Grid.Row="1">
             
         </ListView>
-        <StackPanel Grid.Row="2">
-            
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="&lt;"/>
+            <Button Content="&gt;" Margin="10 0"/>
         </StackPanel>
     </Grid>
 </Page>
