@@ -24,5 +24,15 @@ namespace Practika.Pages
         {
             InitializeComponent();
         }
+
+        private void LeftBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

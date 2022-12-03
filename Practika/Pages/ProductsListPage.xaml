@@ -45,12 +45,20 @@
                 <TextBox x:Name="FoundTb" Width="120" Height="30" />
             </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1">
-            
+        <ListView Grid.Row="1" x:Name="ProductsList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Content="&lt;"/>
-            <Button Content="&gt;" Margin="10 0"/>
+            <Button x:Name="LeftBtn" Content="&lt;" Click="LeftBtn_Click"/>
+            <Button x:Name="RightBtn" Content="&gt;" Margin="10 0" Click="RightBtn_Click"/>
         </StackPanel>
     </Grid>
 </Page>
