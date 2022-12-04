@@ -38,7 +38,7 @@ namespace Practika.Pages
                                             x.Email == EmailTb.Text.Trim() && 
                                             x.Phone == PhoneTb.Text.Trim()))
             {
-                MessageBox.Show("Такой");
+                MessageBox.Show("Такой пользователь существует");
                 return;
             }
             User user = new User()

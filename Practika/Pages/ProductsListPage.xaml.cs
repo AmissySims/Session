@@ -23,6 +23,7 @@ namespace Practika.Pages
         public ProductsListPage()
         {
             InitializeComponent();
+            
         }
 
         private void LeftBtn_Click(object sender, RoutedEventArgs e)
