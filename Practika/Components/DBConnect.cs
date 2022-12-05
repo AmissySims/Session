@@ -14,7 +14,6 @@ namespace Practika.Components
         public DBConnect()
         {
             db.Product.Load();
-            db.User.Load();
         }
     }
 }

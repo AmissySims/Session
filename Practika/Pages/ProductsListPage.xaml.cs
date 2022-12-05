@@ -44,9 +44,61 @@ namespace Practika.Pages
             InitializeComponent();
             
         }
-        public void Refresh()
+        private void Refresh()
         {
+            ObservableCollection<Product> products = Products;
+            
+            if(FilterCb.SelectedItem != null)
+            {
+                switch((FilterCb.SelectedItem as ComboBoxItem).Tag)
+                {
+                    case "1":
+                        products = DBConnect.db.Product.Local;
+                        break;
+                        case "2":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 1));
+                        break;
+                    case "3":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 2));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (SortCb.SelectedItem != null)
+            {
+                switch ((SortCb.SelectedItem as ComboBoxItem).Tag)
+                {
+                    case "1":
+                        products = DBConnect.db.Product.Local;
+                        break;
+                    case "2":
+                        products = new ObservableCollection<Product>(Products.OrderBy(x => x.Title));
 
+                        break;
+                    case "3":
+                        products = new ObservableCollection<Product>(Products.OrderByDescending(x => x.Title));
+                        break;
+                    case "4":
+                        products = new ObservableCollection<Product>(Products.OrderBy(x => x.DateOfAddition));
+                        break;
+                    case "5":
+                        products = new ObservableCollection<Product>(Products.OrderByDescending(x => x.DateOfAddition));
+                        break;
+                    default :
+                        break;
+                }
+
+
+            }
+
+            if(FoundTb.Text.Length > 0)
+            {
+                products = new ObservableCollection<Product>(Products.Where(x => x.Title.ToLower().StartsWith(FoundTb.Text.ToLower()) || x.Description.ToLower().StartsWith(FoundTb.Text.ToLower())));
+            }
+
+            Products = products;
+            FoundCount.Text = products.Count().ToString() + " из ";
         }
 
         private void LeftBtn_Click(object sender, RoutedEventArgs e)

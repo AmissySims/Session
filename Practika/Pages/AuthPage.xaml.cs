@@ -28,7 +28,7 @@ namespace Practika.Pages
 
         private void EntrBtn_Click(object sender, RoutedEventArgs e)
         {
-            User user = DBConnect.db.User.Local.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
+            User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
             
             if (user == null)
             {
@@ -38,7 +38,7 @@ namespace Practika.Pages
 
             Navigation.User = user;
 
-            Navigation.NextPage(new Nav("Регистрация", new RegPage()));
+            Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
         }
 
         private void RegisBtn_Click(object sender, RoutedEventArgs e)

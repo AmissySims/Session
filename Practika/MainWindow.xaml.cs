@@ -26,7 +26,7 @@ namespace Practika
         {
             InitializeComponent();
             Navigation.main = this;
-            Navigation.NextPage(new Nav("Авторизация", new ProductsListPage()));
+            Navigation.NextPage(new Nav("Авторизация", new AuthPage()));
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
