@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Practika.Pages"
       mc:Ignorable="d" 
       Name="Root"
-      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductsListPage">
 

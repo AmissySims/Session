@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Practika.Pages"
       mc:Ignorable="d" 
+      DataContext="{Binding RelativeSource={RelativeSource Self}}" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddEditProductPage">
 
@@ -12,7 +13,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Vertical" >
                 <Image x:Name="ProductImage" Source="{Binding Photo}" Width="180" Height="180"/>
-                <Button Style="{StaticResource MyButton}" Content="Добавить изображение"/>
+                <Button Style="{StaticResource MyButton}" Content="Добавить изображение" Click="Button_Click"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -39,7 +40,7 @@
                     <TextBlock Style="{StaticResource Text}" Text="Количество"/>
                     <TextBox Text="{Binding QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
-                <Button Style="{StaticResource MyButton}" Content="Сохранить"/>
+                <Button Style="{StaticResource MyButton}" Content="Сохранить" Click="Button_Click_1"/>
             </StackPanel>
         </StackPanel>
     </Grid>
