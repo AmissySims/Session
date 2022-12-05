@@ -22,10 +22,8 @@ namespace Practika.Pages
     /// Логика взаимодействия для ProductsListPage.xaml
     /// </summary>
     public partial class ProductsListPage : Page
-
     {
-
-
+        int actualPage = 0;
         public ObservableCollection<Product> Products
         {
             get { return (ObservableCollection<Product>)GetValue(ProductsProperty); }
@@ -47,8 +45,15 @@ namespace Practika.Pages
         private void Refresh()
         {
             ObservableCollection<Product> products = Products;
-            
-            if(FilterCb.SelectedItem != null)
+            if (FilterCb == null)
+                return;
+            if (SortCb == null)
+                return;
+            if (FoundTb == null)
+                return;
+            if (CountCb == null)
+                return;
+            if (FilterCb.SelectedItem != null)
             {
                 switch((FilterCb.SelectedItem as ComboBoxItem).Tag)
                 {
@@ -65,6 +70,7 @@ namespace Practika.Pages
                         break;
                 }
             }
+            
             if (SortCb.SelectedItem != null)
             {
                 switch ((SortCb.SelectedItem as ComboBoxItem).Tag)
@@ -91,8 +97,18 @@ namespace Practika.Pages
 
 
             }
+            //if (CountCb.SelectedIndex > -1 && products.Count() > 0)
+            //{
+            //    int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
+            //    products = (ObservableCollection<Product>)products.Skip(selCount * actualPage).Take(selCount);
+            //    if (products.Count() == 0)
+            //    {
+            //        actualPage--;
+            //        Refresh();
+            //    }
+            //}
 
-            if(FoundTb.Text.Length > 0)
+            if (FoundTb.Text.Length > 0)
             {
                 products = new ObservableCollection<Product>(Products.Where(x => x.Title.ToLower().StartsWith(FoundTb.Text.ToLower()) || x.Description.ToLower().StartsWith(FoundTb.Text.ToLower())));
             }
@@ -103,16 +119,22 @@ namespace Practika.Pages
 
         private void LeftBtn_Click(object sender, RoutedEventArgs e)
         {
+            actualPage--;
+            if (actualPage < 0)
+                actualPage = 0;
+            Refresh();
 
         }
 
         private void RightBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            actualPage++;
+            Refresh();
         }
 
         private void CountCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            actualPage = 0;
             Refresh();
         }
 
@@ -133,10 +155,17 @@ namespace Practika.Pages
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var selproduct = (sender as Button).DataContext as Product;
+            Navigation.NextPage(new Nav("Редактирование", new AddEditProductPage(/*selproduct*/)));
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+     
+            
+        }
+
+        private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
