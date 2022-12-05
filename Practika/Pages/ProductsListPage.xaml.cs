@@ -100,7 +100,7 @@ namespace Practika.Pages
             //if (CountCb.SelectedIndex > -1 && products.Count() > 0)
             //{
             //    int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
-            //    products = (ObservableCollection<Product>)products.Skip(selCount * actualPage).Take(selCount);
+            //    products = new ObservableCollection<Product>( products.Skip(selCount * actualPage).Take(selCount));
             //    if (products.Count() == 0)
             //    {
             //        actualPage--;
