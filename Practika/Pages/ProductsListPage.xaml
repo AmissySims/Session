@@ -20,18 +20,18 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock  Text="Количество записей" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="CountCb"  Margin="5" Width="50" Height="30">
-                    <ComboBoxItem Content="Все"/>
-                    <ComboBoxItem Content="10"/>
-                    <ComboBoxItem Content="50"/>
-                    <ComboBoxItem Content="200"/>
+                    <ComboBoxItem  Tag="1" Content="Все"/>
+                    <ComboBoxItem Tag="2" Content="10"/>
+                    <ComboBoxItem Tag="3" Content="50"/>
+                    <ComboBoxItem Tag="4" Content="200"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock  Text="Сортировка" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="SortCb"  Margin="5" Width="80" Height="30">
-                    <ComboBoxItem Content="По умолчанию"/>
-                    <ComboBoxItem Content="От А до Я"/>
-                    <ComboBoxItem Content="Сначала новые"/>
+                    <ComboBoxItem Tag="1" Content="По умолчанию"/>
+                    <ComboBoxItem Tag="2" Content="От А до Я"/>
+                    <ComboBoxItem Tag="3" Content="Сначала новые"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
