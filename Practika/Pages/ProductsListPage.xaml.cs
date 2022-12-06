@@ -40,7 +40,8 @@ namespace Practika.Pages
             DBConnect.db.Product.Load();
             Products = DBConnect.db.Product.Local;
             InitializeComponent();
-            
+            GeneralCount.Text = DBConnect.db.Product.Count().ToString();
+
         }
         private void Refresh()
         {
@@ -60,17 +61,20 @@ namespace Practika.Pages
                     case "1":
                         products = DBConnect.db.Product.Local;
                         break;
-                        case "2":
+                    case "2":
                         products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 1));
                         break;
                     case "3":
                         products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 2));
                         break;
+                 
                     default:
                         break;
                 }
+                
             }
-            
+            ProductsList.ItemsSource = products.ToList();
+
             if (SortCb.SelectedItem != null)
             {
                 switch ((SortCb.SelectedItem as ComboBoxItem).Tag)
@@ -100,7 +104,7 @@ namespace Practika.Pages
             //if (CountCb.SelectedIndex > -1 && products.Count() > 0)
             //{
             //    int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
-            //    products = new ObservableCollection<Product>( products.Skip(selCount * actualPage).Take(selCount));
+            //    products = new ObservableCollection<Product>(products.Skip(selCount * actualPage).Take(selCount));
             //    if (products.Count() == 0)
             //    {
             //        actualPage--;
@@ -156,7 +160,7 @@ namespace Practika.Pages
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
             var selproduct = (sender as Button).DataContext as Product;
-            Navigation.NextPage(new Nav("Редактирование", new AddEditProductPage(/*selproduct*/)));
+            Navigation.NextPage(new Nav("Редактирование", new AddEditProductPage(selproduct)));
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
@@ -167,7 +171,7 @@ namespace Practika.Pages
 
         private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.NextPage(new Nav("Добавление продукта", new AddEditProductPage(new Product())));
         }
     }
 }

@@ -72,7 +72,7 @@
                                 <TextBlock Style="{StaticResource Text}" Text="{Binding Cost, StringFormat=F}" />
                                 <TextBlock Style="{StaticResource Text}" Text="{Binding DateOfAddition}" Margin="10 0"/>
                                 <TextBlock Style="{StaticResource Text}" Text="Ед. измерения:"/>
-                                <TextBlock Style="{StaticResource Text}" Text="{Binding UnitOfMeansurementId}" Margin="5 0"/>
+                                <TextBlock Style="{StaticResource Text}" Text="{Binding UnitOfMeansurement.Title}" Margin="5 0"/>
                                 <TextBlock Style="{StaticResource Text}" Text="Количество:" Margin="5 0"/>
                                 <TextBlock Style="{StaticResource Text}" Text="{Binding QuantityInStock}" Margin="5 0"/>
                             </StackPanel>
@@ -89,8 +89,8 @@
             <Button x:Name="LeftBtn" Content="&lt;" Click="LeftBtn_Click"/>
             <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddProductBtn_Click"/>
             <TextBlock x:Name="FoundCount"/>
-            <TextBlock x:Name="GeneralCount"/>
-            <Button x:Name="RightBtn" Content="&gt;" Margin="775 0" Click="RightBtn_Click"/>
+            <TextBlock x:Name="GeneralCount" />
+            <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
         </StackPanel>
     </Grid>
 </Page>

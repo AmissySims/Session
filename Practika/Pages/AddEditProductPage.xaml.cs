@@ -1,7 +1,10 @@
-﻿using Practika.Components;
+﻿using Microsoft.Win32;
+using Practika.Components;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,29 +25,38 @@ namespace Practika.Pages
     /// </summary>
     public partial class AddEditProductPage : Page
     {
-        public ObservableCollection<Product> Products
-        {
-            get { return (ObservableCollection<Product>)GetValue(ProductsProperty); }
-            set { SetValue(ProductsProperty, value); }
-        }
+        public Product product { get; set; }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ProductsProperty =
-            DependencyProperty.Register("Products", typeof(ObservableCollection<Product>), typeof(ProductsListPage));
-
-        public AddEditProductPage()
+        public AddEditProductPage(Product _product)
         {
+            product = _product;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+        private void AddImageBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg",
+            };
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                product.Photo = File.ReadAllBytes(openFile.FileName);
+                ProductImage.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            
+           DBConnect.db.Product.Local.Add(product);
+            DBConnect.db.SaveChanges();
+            MessageBox.Show("Сохранено");
+                
 
+            
+            Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
         }
     }
 }

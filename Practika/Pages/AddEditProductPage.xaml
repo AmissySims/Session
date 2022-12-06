@@ -12,35 +12,35 @@
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Vertical" >
-                <Image x:Name="ProductImage" Source="{Binding Photo}" Width="180" Height="180"/>
-                <Button Style="{StaticResource MyButton}" Content="Добавить изображение" Click="Button_Click"/>
+                <Image x:Name="ProductImage" Source="{Binding product.Photo}" Width="180" Height="180"/>
+                <Button x:Name="AddImageBtn" Style="{StaticResource MyButton}" Content="Добавить изображение" Click="AddImageBtn_Click" />
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Название"/>
-                    <TextBox Text="{Binding Title}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding product.Title}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Цена"/>
-                    <TextBox Text="{Binding Cost}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding product.Cost}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Описание"/>
-                    <TextBox Text="{Binding Description}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding product.Description}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Дата"/>
-                    <TextBox Text="{Binding DateOfAddition}" Height="20" Width="200" Margin="5"/>
+                    <TextBox Text="{Binding product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Ед. измерения"/>
-                    <TextBox Text="{Binding UnitOfMeansurementId}" Height="20" Width="200" Margin="5"/>
+                    <TextBox Text="{Binding product.UnitOfMeansurementId}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Количество"/>
-                    <TextBox Text="{Binding QuantityInStock}" Height="20" Width="200" Margin="5"/>
+                    <TextBox Text="{Binding product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
-                <Button Style="{StaticResource MyButton}" Content="Сохранить" Click="Button_Click_1"/>
+                <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>
