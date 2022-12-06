@@ -73,7 +73,7 @@ namespace Practika.Pages
                 }
                 
             }
-            ProductsList.ItemsSource = products.ToList();
+            
 
             if (SortCb.SelectedItem != null)
             {
@@ -101,16 +101,16 @@ namespace Practika.Pages
 
 
             }
-            //if (CountCb.SelectedIndex > -1 && products.Count() > 0)
-            //{
-            //    int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
-            //    products = new ObservableCollection<Product>(products.Skip(selCount * actualPage).Take(selCount));
-            //    if (products.Count() == 0)
-            //    {
-            //        actualPage--;
-            //        Refresh();
-            //    }
-            //}
+            if (CountCb.SelectedIndex > -1 && products.Count() > 0)
+            {
+                int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
+                products = new ObservableCollection<Product>(products.Skip(selCount * actualPage).Take(selCount));
+                if (products.Count() == 0)
+                {
+                    actualPage--;
+                    Refresh();
+                }
+            }
 
             if (FoundTb.Text.Length > 0)
             {
@@ -118,6 +118,7 @@ namespace Practika.Pages
             }
 
             Products = products;
+            ProductsList.ItemsSource = products.ToList();
             FoundCount.Text = products.Count().ToString() + " из ";
         }
 
