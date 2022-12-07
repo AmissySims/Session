@@ -12,15 +12,15 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Margin="5" Style="{StaticResource Text}" Text="Логин"/>
-                <TextBox x:Name="LoginTb" Padding="2" Width="200"></TextBox>
+                <TextBox x:Name="LoginTb" Margin="5" Padding="2" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Margin="5" Style="{StaticResource Text}" Text="Пароль"/>
-                <TextBox x:Name="PasswordTb" Padding="2" Width="200"></TextBox>
+                <TextBox x:Name="PasswordTb" Margin="5" Padding="2" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="True" x:Name="SaveCb" Margin="10"></CheckBox>
-                <TextBlock Style="{StaticResource Text}" Text="Запомнить"/>
+                <TextBlock Style="{StaticResource Text}" Margin="5" Text="Запомнить"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Style="{StaticResource MyButton}" x:Name="EntrBtn" Content="Вход" Click="EntrBtn_Click"/>

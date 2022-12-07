@@ -89,8 +89,9 @@
         </ListView>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="LeftBtn" Content="&lt;" Click="LeftBtn_Click"/>
-            <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddProductBtn_Click"/>
-            <Button  Margin="0" x:Name="OrderBtn"  Content="Оформить заказ" 
+            <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}"
+                    Content="Добавить" Click="AddProductBtn_Click"/>
+            <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
                      Style="{StaticResource MyButton}" ></Button>
             <TextBlock x:Name="FoundCount"/>
             <TextBlock x:Name="GeneralCount" />
