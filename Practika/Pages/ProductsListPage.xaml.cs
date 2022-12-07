@@ -183,12 +183,7 @@ namespace Practika.Pages
             Navigation.NextPage(new Nav("Редактирование", new AddEditProductPage(selproduct)));
         }
 
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-     
-            
-        }
-
+        
         private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new Nav("Добавление продукта", new AddEditProductPage(new Product())));

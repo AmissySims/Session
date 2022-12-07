@@ -32,13 +32,13 @@
                     <TextBlock Style="{StaticResource Text}" Text="Дата"/>
                     <TextBox Text="{Binding product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource Text}" Text="Ед. измерения"/>
                     <ComboBox
                         x:Name="EditUnitOfMeansurement"
                         ItemsSource="{Binding MeasureUnits}"
                         SelectedIndex="{Binding product.UnitOfMeansurementId}"
-                        SelectionChanged="FilterProduct_SelectionChanged_1">
+                        SelectionChanged="FilterProduct_SelectionChanged_1" Margin="5">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <ComboBoxItem Tag="{Binding Title}"

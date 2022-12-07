@@ -43,7 +43,7 @@
                     <ComboBoxItem Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="Кг"/>
                     <ComboBoxItem Tag="3" Content="Шт"/>
-                    
+
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -61,8 +61,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="55"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="41"/>
                         </Grid.RowDefinitions>
                         <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
                         <TextBlock Style="{StaticResource Text}" Text="{Binding Title}" 
@@ -93,8 +93,7 @@
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                             <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
                                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="CreateBtn_Click"/>
-                            <Button Style="{StaticResource MyButton}" x:Name="DeleteBtn" 
-                                    Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="DeleteBtn_Click"/>
+
                         </StackPanel>
 
                     </Grid>
@@ -107,7 +106,7 @@
                     Content="Добавить" Click="AddProductBtn_Click"/>
             <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
                      Style="{StaticResource MyButton}" Click="OrderBtn_Click" ></Button>
-       
+
             <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
             <TextBlock x:Name="FoundCount"/>
             <TextBlock x:Name="GeneralCount" />
