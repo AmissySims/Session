@@ -78,8 +78,10 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="CreateBtn_Click"/>
-                            <Button Style="{StaticResource MyButton}" x:Name="DeleteBtn" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="DeleteBtn_Click"/>
+                            <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
+                                    HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="CreateBtn_Click"/>
+                            <Button Style="{StaticResource MyButton}" x:Name="DeleteBtn" 
+                                    Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="DeleteBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -88,6 +90,8 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="LeftBtn" Content="&lt;" Click="LeftBtn_Click"/>
             <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddProductBtn_Click"/>
+            <Button  Margin="0" x:Name="OrderBtn"  Content="Оформить заказ" 
+                     Style="{StaticResource MyButton}" ></Button>
             <TextBlock x:Name="FoundCount"/>
             <TextBlock x:Name="GeneralCount" />
             <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
