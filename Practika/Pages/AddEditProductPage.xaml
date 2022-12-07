@@ -34,7 +34,18 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Ед. измерения"/>
-                    <TextBox Text="{Binding product.UnitOfMeansurementId}" Height="20" Width="200" Margin="5"/>
+                    <ComboBox
+                        x:Name="EditUnitOfMeansurement"
+                        ItemsSource="{Binding MeasureUnits}"
+                        SelectedIndex="{Binding product.UnitOfMeansurementId}"
+                        SelectionChanged="FilterProduct_SelectionChanged_1">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <ComboBoxItem Tag="{Binding Title}"
+                                              Content="{Binding Title}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource Text}" Text="Количество"/>

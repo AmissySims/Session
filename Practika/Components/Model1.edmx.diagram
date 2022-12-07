@@ -5,29 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d9b284b2792548e09b3fb1c8b96a63a2" Name="Diagram1">
-        <EntityTypeShape EntityType="ProductsSessionModel.Gender" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Order" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.OrderStatus" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Product" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.ProductOrder" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Role" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.SuppliersCountry" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.UnitOfMeansurement" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductsSessionModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="ProductsSessionModel.FK_User_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_Order_OrderStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_Order_User" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_Order_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_ProductOrder_Order1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_Product_UnitOfMeansurement" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_ProductOrder_Product1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_ShipmentProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_User_Role1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.FK_ShipmentProduct_Shipment" ManuallyRouted="false" />
-        <AssociationConnector Association="ProductsSessionModel.ProductsCountries" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Gender" Width="3" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Order" Width="3" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="ProductsSessionModel.OrderStatus" Width="3" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Product" Width="3" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="ProductsSessionModel.ProductOrder" Width="3" PointX="7.5" PointY="1.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Role" Width="3" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Shipment" Width="3" PointX="5.25" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.ShipmentProduct" Width="3" PointX="7.5" PointY="9.875" />
+        <EntityTypeShape EntityType="ProductsSessionModel.SuppliersCountry" Width="3" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.sysdiagrams" Width="3" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.UnitOfMeansurement" Width="3" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.User" Width="3" PointX="3" PointY="1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_User_Gender" />
+        <AssociationConnector Association="ProductsSessionModel.FK_Order_OrderStatus" />
+        <AssociationConnector Association="ProductsSessionModel.FK_Order_User" />
+        <AssociationConnector Association="ProductsSessionModel.FK_Order_User1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_ProductOrder_Order1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_Product_UnitOfMeansurement1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_ProductOrder_Product1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_ShipmentProduct_Product" />
+        <AssociationConnector Association="ProductsSessionModel.FK_User_Role1" />
+        <AssociationConnector Association="ProductsSessionModel.FK_ShipmentProduct_Shipment" />
+        <AssociationConnector Association="ProductsSessionModel.ProductsCountries" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

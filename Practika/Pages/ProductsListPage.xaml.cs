@@ -24,6 +24,7 @@ namespace Practika.Pages
     public partial class ProductsListPage : Page
     {
         int actualPage = 0;
+        
         public ObservableCollection<Product> Products
         {
             get { return (ObservableCollection<Product>)GetValue(ProductsProperty); }
@@ -35,10 +36,14 @@ namespace Practika.Pages
             DependencyProperty.Register("Products", typeof(ObservableCollection<Product>), typeof(ProductsListPage));
 
 
+
+       
+
         public ProductsListPage()
         {
             DBConnect.db.Product.Load();
             Products = DBConnect.db.Product.Local;
+            
             InitializeComponent();
             GeneralCount.Text = DBConnect.db.Product.Count().ToString();
 
@@ -46,10 +51,10 @@ namespace Practika.Pages
         private void Refresh()
         {
             ObservableCollection<Product> products = Products;
-            if (FilterCb == null)
-                return;
-            if (SortCb == null)
-                return;
+            //if (FilterCb == null)
+            //    return;
+            //if (SortCb == null)
+            //    return;
             if (FoundTb == null)
                 return;
             if (CountCb == null)
@@ -73,7 +78,9 @@ namespace Practika.Pages
                 }
                 
             }
-            
+            Products = products;
+
+            //ProductsList.ItemsSource = products.ToList();
 
             if (SortCb.SelectedItem != null)
             {
@@ -101,24 +108,36 @@ namespace Practika.Pages
 
 
             }
+            Products = products;
+
+            //ProductsList.ItemsSource = products.ToList();
             if (CountCb.SelectedIndex > -1 && products.Count() > 0)
             {
-                int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
-                products = new ObservableCollection<Product>(products.Skip(selCount * actualPage).Take(selCount));
-                if (products.Count() == 0)
+                int selCount;
+
+                if ((CountCb.SelectedItem as ComboBoxItem).Content.ToString() == "Все")
+                    products = DBConnect.db.Product.Local;
+                else
                 {
-                    actualPage--;
-                    Refresh();
+                    selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
+
+                    products = new ObservableCollection<Product>(products.Skip(selCount * actualPage).Take(selCount));
+                    if (products.Count() == 0)
+                    {
+                        actualPage--;
+                        Refresh();
+                    }
                 }
             }
 
+            ProductsList.ItemsSource = products.ToList();
             if (FoundTb.Text.Length > 0)
             {
                 products = new ObservableCollection<Product>(Products.Where(x => x.Title.ToLower().StartsWith(FoundTb.Text.ToLower()) || x.Description.ToLower().StartsWith(FoundTb.Text.ToLower())));
             }
-
-            Products = products;
             ProductsList.ItemsSource = products.ToList();
+            Products = products;
+            
             FoundCount.Text = products.Count().ToString() + " из ";
         }
 
@@ -177,7 +196,7 @@ namespace Practika.Pages
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new ())));
+        //    Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new Order())));
         }
     }
 }

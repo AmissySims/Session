@@ -26,10 +26,13 @@ namespace Practika.Pages
     public partial class AddEditProductPage : Page
     {
         public Product product { get; set; }
-
+        public List<UnitOfMeansurement> MeasureUnits { get; set; }
         public AddEditProductPage(Product _product)
         {
             product = _product;
+            DBConnect.db.UnitOfMeansurement.Load();
+            MeasureUnits = DBConnect.db.UnitOfMeansurement.Local.ToList();
+          
             InitializeComponent();
         }
 
@@ -57,6 +60,14 @@ namespace Practika.Pages
 
             
             Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
+        }
+
+        private void FilterProduct_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (EditUnitOfMeansurement.SelectedItem == null)
+                return;
+
+            product.UnitOfMeansurement = EditUnitOfMeansurement.SelectedItem as UnitOfMeansurement;
         }
     }
 }

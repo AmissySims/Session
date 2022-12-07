@@ -22,7 +22,7 @@ namespace Practika.Components
     
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Color { get; set; }
+        public string ColorHex { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

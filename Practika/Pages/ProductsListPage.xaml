@@ -16,7 +16,7 @@
             <RowDefinition Height="183*"/>
             <RowDefinition Height="19*"/>
         </Grid.RowDefinitions>
-       
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock  Text="Количество записей" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -43,7 +43,7 @@
                     <ComboBoxItem Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="Кг"/>
                     <ComboBoxItem Tag="3" Content="Шт"/>
-                    <ComboBoxItem Tag="4" Content="В этом месяце"/>
+                    
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -61,11 +61,24 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <Image Source="{Binding Photo}" Grid.RowSpan="3" Height="100"/>
-                        <TextBlock Style="{StaticResource Text}" Text="{Binding Title}" Grid.Column="1" HorizontalAlignment="Center"/>
+                        <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
+                        <TextBlock Style="{StaticResource Text}" Text="{Binding Title}" 
+                                   Grid.Column="1" Margin="329,0,329,0"/>
+                        <ListBox Grid.Row="2" ItemsSource="{Binding Path=SuppliersCountry}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
                             <TextBlock Style="{StaticResource Text}" Text="{Binding Description}"/>
                             <StackPanel Orientation="Horizontal">
@@ -83,6 +96,7 @@
                             <Button Style="{StaticResource MyButton}" x:Name="DeleteBtn" 
                                     Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="DeleteBtn_Click"/>
                         </StackPanel>
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -93,9 +107,10 @@
                     Content="Добавить" Click="AddProductBtn_Click"/>
             <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
                      Style="{StaticResource MyButton}" Click="OrderBtn_Click" ></Button>
+       
+            <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
             <TextBlock x:Name="FoundCount"/>
             <TextBlock x:Name="GeneralCount" />
-            <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
         </StackPanel>
     </Grid>
 </Page>

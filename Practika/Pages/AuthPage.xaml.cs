@@ -24,26 +24,51 @@ namespace Practika.Pages
         public AuthPage()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.Login != null)
+                LoginTb.Text = Properties.Settings.Default.Login;
+            if (Properties.Settings.Default.Password != null)
+                PasswordTb.Text = Properties.Settings.Default.Password;
         }
 
         private void EntrBtn_Click(object sender, RoutedEventArgs e)
         {
             User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
-            
+
             if (user == null)
             {
                 MessageBox.Show("Логин или пароль неверный");
                 return;
             }
+            else
+            {
+               
+                
+                
+                
+                    if (SaveCb.IsChecked == true)
+                    {
+                        Properties.Settings.Default.Login = LoginTb.Text;
+                        Properties.Settings.Default.Password = PasswordTb.Text;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Login = null;
+                        Properties.Settings.Default.Password = null;
+                        Properties.Settings.Default.Save();
+                    }
+                    Navigation.User = user;
 
-            Navigation.User = user;
+                    Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
+                
 
-            Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
+                
+            }
         }
-
         private void RegisBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new Nav("Регистрация", new RegPage()));
         }
     }
 }
+
