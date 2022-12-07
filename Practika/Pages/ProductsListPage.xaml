@@ -92,7 +92,7 @@
             <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}"
                     Content="Добавить" Click="AddProductBtn_Click"/>
             <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
-                     Style="{StaticResource MyButton}" ></Button>
+                     Style="{StaticResource MyButton}" Click="OrderBtn_Click" ></Button>
             <TextBlock x:Name="FoundCount"/>
             <TextBlock x:Name="GeneralCount" />
             <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>

@@ -174,5 +174,10 @@ namespace Practika.Pages
         {
             Navigation.NextPage(new Nav("Добавление продукта", new AddEditProductPage(new Product())));
         }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
