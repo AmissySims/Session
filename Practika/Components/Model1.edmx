@@ -501,7 +501,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="ProductsSessionModel.FK_Product_UnitOfMeansurement1" FromRole="UnitOfMeansurement" ToRole="Product" />
         </EntityType>

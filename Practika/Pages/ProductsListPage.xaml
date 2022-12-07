@@ -66,7 +66,7 @@
                         </Grid.RowDefinitions>
                         <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
                         <TextBlock Style="{StaticResource Text}" Text="{Binding Title}" 
-                                   Grid.Column="1" Margin="329,0,329,0"/>
+                                   Grid.Column="1" HorizontalAlignment="Center"/>
                         <ListBox Grid.Row="2" ItemsSource="{Binding Path=SuppliersCountry}">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -79,7 +79,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10 0">
                             <TextBlock Style="{StaticResource Text}" Text="{Binding Description}"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource Text}" Text="{Binding Cost, StringFormat=F}" />
@@ -90,7 +90,7 @@
                                 <TextBlock Style="{StaticResource Text}" Text="{Binding QuantityInStock}" Margin="5 0"/>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10 0">
                             <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
                                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="CreateBtn_Click"/>
 
@@ -105,11 +105,14 @@
             <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}"
                     Content="Добавить" Click="AddProductBtn_Click"/>
             <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
-                     Style="{StaticResource MyButton}" Click="OrderBtn_Click" ></Button>
+                     Style="{StaticResource MyButton}" Click="OrderBtn_Click"/>
 
-            <Button x:Name="RightBtn" Content="&gt;"  Click="RightBtn_Click"/>
-            <TextBlock x:Name="FoundCount"/>
-            <TextBlock x:Name="GeneralCount" />
+            <Button x:Name="RightBtn" Content="&gt;"  
+                    Click="RightBtn_Click"/>
+            <StackPanel Orientation="Horizontal" Margin="20 0">
+                <TextBlock x:Name="FoundCount"/>
+                <TextBlock x:Name="GeneralCount"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
-</Page>
+</Page> 

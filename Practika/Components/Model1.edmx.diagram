@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d9b284b2792548e09b3fb1c8b96a63a2" Name="Diagram1">
-        <EntityTypeShape EntityType="ProductsSessionModel.Gender" Width="3" PointX="0.75" PointY="2.125" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Order" Width="3" PointX="5.25" PointY="1.5" />
-        <EntityTypeShape EntityType="ProductsSessionModel.OrderStatus" Width="3" PointX="3" PointY="6.125" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Product" Width="3" PointX="5.25" PointY="9.25" />
-        <EntityTypeShape EntityType="ProductsSessionModel.ProductOrder" Width="3" PointX="7.5" PointY="1.75" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Role" Width="3" PointX="0.75" PointY="6.125" />
-        <EntityTypeShape EntityType="ProductsSessionModel.Shipment" Width="3" PointX="5.25" PointY="6.125" />
-        <EntityTypeShape EntityType="ProductsSessionModel.ShipmentProduct" Width="3" PointX="7.5" PointY="9.875" />
-        <EntityTypeShape EntityType="ProductsSessionModel.SuppliersCountry" Width="3" PointX="7.5" PointY="12.75" />
-        <EntityTypeShape EntityType="ProductsSessionModel.sysdiagrams" Width="3" PointX="7.75" PointY="4.75" />
-        <EntityTypeShape EntityType="ProductsSessionModel.UnitOfMeansurement" Width="3" PointX="3" PointY="10.125" />
-        <EntityTypeShape EntityType="ProductsSessionModel.User" Width="3" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Gender" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Order" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="ProductsSessionModel.OrderStatus" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Product" Width="1.5" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="ProductsSessionModel.ProductOrder" Width="1.5" PointX="7.5" PointY="1.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Role" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="9.875" />
+        <EntityTypeShape EntityType="ProductsSessionModel.SuppliersCountry" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ProductsSessionModel.UnitOfMeansurement" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="ProductsSessionModel.User" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="ProductsSessionModel.FK_User_Gender" />
         <AssociationConnector Association="ProductsSessionModel.FK_Order_OrderStatus" />
         <AssociationConnector Association="ProductsSessionModel.FK_Order_User" />
