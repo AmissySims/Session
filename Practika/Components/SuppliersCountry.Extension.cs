@@ -24,26 +24,7 @@ namespace Practika.Components
         }
 
 
-        public Visibility BtnVisible
-        {
-            get
-            {
-                if (Navigation.User.RoleId == 1) 
-                    return Visibility.Collapsed;
-                else
-                    return Visibility.Visible;
-            }
-        }
-
-        //public string ColorDis
-        //{
-        //    get
-        //    {
-        //        if (QuanityInStock == 0 || QuanityInStock == null)
-        //            return "#ffffff";
-        //        else
-        //            return "#D1FFD1";
-        //    }
-        //}
+      }
+        
     }
-}
+

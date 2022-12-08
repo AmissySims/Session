@@ -9,8 +9,10 @@
       Title="OrderPage">
 
     <Grid>
-        <StackPanel>
-            
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

@@ -17,23 +17,23 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Название"/>
+                    <TextBlock  Text="Название"/>
                     <TextBox Text="{Binding product.Title}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Цена"/>
+                    <TextBlock  Text="Цена"/>
                     <TextBox Text="{Binding product.Cost}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Описание"/>
+                    <TextBlock Text="Описание"/>
                     <TextBox Text="{Binding product.Description}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Дата"/>
+                    <TextBlock  Text="Дата"/>
                     <TextBox Text="{Binding product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Text}" Text="Ед. измерения" Margin="5 0"/>
+                    <TextBlock Text="Ед. измерения" Margin="5 0"/>
                     <ComboBox
                         x:Name="EditUnitOfMeansurement"
                         ItemsSource="{Binding MeasureUnits}"
@@ -48,7 +48,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Количество" Margin="5 0"/>
+                    <TextBlock  Text="Количество" Margin="5 0"/>
                     <TextBox Text="{Binding product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />

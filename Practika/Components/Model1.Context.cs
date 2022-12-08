@@ -13,10 +13,10 @@ namespace Practika.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProductsSessionEntities2 : DbContext
+    public partial class ProductsBaseEntities : DbContext
     {
-        public ProductsSessionEntities2()
-            : base("name=ProductsSessionEntities2")
+        public ProductsBaseEntities()
+            : base("name=ProductsBaseEntities")
         {
         }
     

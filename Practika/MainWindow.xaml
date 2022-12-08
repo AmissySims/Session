@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <Rectangle  Fill="#FFB5D5CA"></Rectangle>
         <Image Source="/Resourses\logo.png" HorizontalAlignment="Left" Width="47"></Image>
-        <TextBlock x:Name="TitlePage" Style="{StaticResource Text}" Height="22" Width="170" >Компания доставки</TextBlock>
+        <TextBlock x:Name="TitlePage"  Height="22" Width="170" >Компания доставки</TextBlock>
         <Button  x:Name="BackBtn" Style="{StaticResource MyButton }"
                  HorizontalAlignment="Left" Margin="644 10 0 0" Content="Назад" 
                  Height="22" VerticalAlignment="Top" Click="BackBtn_Click"/>

@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:Practika"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="TextBlock" x:Key="Text">
+        <Style TargetType="TextBlock" >
             <Setter Property="FontFamily" Value=" Comic Sans MS"></Setter>
             <Setter Property="Foreground" Value="Black" ></Setter>
-            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
             
         </Style>
         <Style TargetType="Button" x:Key="MyButton" >

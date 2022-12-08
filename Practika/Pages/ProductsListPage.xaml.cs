@@ -209,5 +209,10 @@ namespace Practika.Pages
         {
             Navigation.NextPage(new Nav("Оформление заказа", new OrderPage()));
         }
+
+        private void AllOrdersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new Nav("Заказы", new AllOrdersPage()));
+        }
     }
 }

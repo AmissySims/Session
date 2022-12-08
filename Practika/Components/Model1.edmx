@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище ProductsSessionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ProductsBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
           <Property Name="OrderStatusId" Type="int" />
           <Property Name="UserExecutor" Type="int" />
@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Product">
@@ -64,14 +64,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Shipment">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
         </EntityType>
         <EntityType Name="ShipmentProduct">
@@ -87,7 +87,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="ColorHex" Type="char" MaxLength="6" />
         </EntityType>
@@ -112,7 +112,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
@@ -267,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ProductsSessionModelContainer">
+        <EntityContainer Name="Хранилище ProductsBaseModelContainer">
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
@@ -333,61 +333,61 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProductsSessionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ProductsSessionEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Gender" EntityType="ProductsSessionModel.Gender" />
-          <EntitySet Name="Order" EntityType="ProductsSessionModel.Order" />
-          <EntitySet Name="OrderStatus" EntityType="ProductsSessionModel.OrderStatus" />
-          <EntitySet Name="Product" EntityType="ProductsSessionModel.Product" />
-          <EntitySet Name="ProductOrder" EntityType="ProductsSessionModel.ProductOrder" />
-          <EntitySet Name="Role" EntityType="ProductsSessionModel.Role" />
-          <EntitySet Name="Shipment" EntityType="ProductsSessionModel.Shipment" />
-          <EntitySet Name="ShipmentProduct" EntityType="ProductsSessionModel.ShipmentProduct" />
-          <EntitySet Name="SuppliersCountry" EntityType="ProductsSessionModel.SuppliersCountry" />
-          <EntitySet Name="sysdiagrams" EntityType="ProductsSessionModel.sysdiagrams" />
-          <EntitySet Name="UnitOfMeansurement" EntityType="ProductsSessionModel.UnitOfMeansurement" />
-          <EntitySet Name="User" EntityType="ProductsSessionModel.User" />
-          <AssociationSet Name="FK_User_Gender" Association="ProductsSessionModel.FK_User_Gender">
+      <Schema Namespace="ProductsBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProductsBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gender" EntityType="ProductsBaseModel.Gender" />
+          <EntitySet Name="Order" EntityType="ProductsBaseModel.Order" />
+          <EntitySet Name="OrderStatus" EntityType="ProductsBaseModel.OrderStatus" />
+          <EntitySet Name="Product" EntityType="ProductsBaseModel.Product" />
+          <EntitySet Name="ProductOrder" EntityType="ProductsBaseModel.ProductOrder" />
+          <EntitySet Name="Role" EntityType="ProductsBaseModel.Role" />
+          <EntitySet Name="Shipment" EntityType="ProductsBaseModel.Shipment" />
+          <EntitySet Name="ShipmentProduct" EntityType="ProductsBaseModel.ShipmentProduct" />
+          <EntitySet Name="SuppliersCountry" EntityType="ProductsBaseModel.SuppliersCountry" />
+          <EntitySet Name="sysdiagrams" EntityType="ProductsBaseModel.sysdiagrams" />
+          <EntitySet Name="UnitOfMeansurement" EntityType="ProductsBaseModel.UnitOfMeansurement" />
+          <EntitySet Name="User" EntityType="ProductsBaseModel.User" />
+          <AssociationSet Name="FK_User_Gender" Association="ProductsBaseModel.FK_User_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_OrderStatus" Association="ProductsSessionModel.FK_Order_OrderStatus">
+          <AssociationSet Name="FK_Order_OrderStatus" Association="ProductsBaseModel.FK_Order_OrderStatus">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_User" Association="ProductsSessionModel.FK_Order_User">
+          <AssociationSet Name="FK_Order_User" Association="ProductsBaseModel.FK_Order_User">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_User1" Association="ProductsSessionModel.FK_Order_User1">
+          <AssociationSet Name="FK_Order_User1" Association="ProductsBaseModel.FK_Order_User1">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Order1" Association="ProductsSessionModel.FK_ProductOrder_Order1">
+          <AssociationSet Name="FK_ProductOrder_Order1" Association="ProductsBaseModel.FK_ProductOrder_Order1">
             <End Role="Order" EntitySet="Order" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_UnitOfMeansurement1" Association="ProductsSessionModel.FK_Product_UnitOfMeansurement1">
+          <AssociationSet Name="FK_Product_UnitOfMeansurement1" Association="ProductsBaseModel.FK_Product_UnitOfMeansurement1">
             <End Role="UnitOfMeansurement" EntitySet="UnitOfMeansurement" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Product1" Association="ProductsSessionModel.FK_ProductOrder_Product1">
+          <AssociationSet Name="FK_ProductOrder_Product1" Association="ProductsBaseModel.FK_ProductOrder_Product1">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_ShipmentProduct_Product" Association="ProductsSessionModel.FK_ShipmentProduct_Product">
+          <AssociationSet Name="FK_ShipmentProduct_Product" Association="ProductsBaseModel.FK_ShipmentProduct_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ShipmentProduct" EntitySet="ShipmentProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Role1" Association="ProductsSessionModel.FK_User_Role1">
+          <AssociationSet Name="FK_User_Role1" Association="ProductsBaseModel.FK_User_Role1">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_ShipmentProduct_Shipment" Association="ProductsSessionModel.FK_ShipmentProduct_Shipment">
+          <AssociationSet Name="FK_ShipmentProduct_Shipment" Association="ProductsBaseModel.FK_ShipmentProduct_Shipment">
             <End Role="Shipment" EntitySet="Shipment" />
             <End Role="ShipmentProduct" EntitySet="ShipmentProduct" />
           </AssociationSet>
-          <AssociationSet Name="ProductsCountries" Association="ProductsSessionModel.ProductsCountries">
+          <AssociationSet Name="ProductsCountries" Association="ProductsBaseModel.ProductsCountries">
             <End Role="Product" EntitySet="Product" />
             <End Role="SuppliersCountry" EntitySet="SuppliersCountry" />
           </AssociationSet>
@@ -396,31 +396,31 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="ProductsSessionModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="ProductsBaseModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="OrderStatusId" Type="Int32" />
           <Property Name="UserExecutor" Type="Int32" />
           <Property Name="UserCustomer" Type="Int32" />
-          <NavigationProperty Name="OrderStatus" Relationship="ProductsSessionModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
-          <NavigationProperty Name="User" Relationship="ProductsSessionModel.FK_Order_User" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="ProductsSessionModel.FK_Order_User1" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="ProductOrder" Relationship="ProductsSessionModel.FK_ProductOrder_Order1" FromRole="Order" ToRole="ProductOrder" />
+          <NavigationProperty Name="OrderStatus" Relationship="ProductsBaseModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="User" Relationship="ProductsBaseModel.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ProductsBaseModel.FK_Order_User1" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="ProductOrder" Relationship="ProductsBaseModel.FK_ProductOrder_Order1" FromRole="Order" ToRole="ProductOrder" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="ProductsSessionModel.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="ProductsBaseModel.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -434,10 +434,10 @@
           <Property Name="DateOfAddition" Type="DateTime" Precision="0" />
           <Property Name="UnitOfMeansurementId" Type="Int32" />
           <Property Name="QuantityInStock" Type="Int32" />
-          <NavigationProperty Name="UnitOfMeansurement" Relationship="ProductsSessionModel.FK_Product_UnitOfMeansurement1" FromRole="Product" ToRole="UnitOfMeansurement" />
-          <NavigationProperty Name="ProductOrder" Relationship="ProductsSessionModel.FK_ProductOrder_Product1" FromRole="Product" ToRole="ProductOrder" />
-          <NavigationProperty Name="ShipmentProduct" Relationship="ProductsSessionModel.FK_ShipmentProduct_Product" FromRole="Product" ToRole="ShipmentProduct" />
-          <NavigationProperty Name="SuppliersCountry" Relationship="ProductsSessionModel.ProductsCountries" FromRole="Product" ToRole="SuppliersCountry" />
+          <NavigationProperty Name="UnitOfMeansurement" Relationship="ProductsBaseModel.FK_Product_UnitOfMeansurement1" FromRole="Product" ToRole="UnitOfMeansurement" />
+          <NavigationProperty Name="ProductOrder" Relationship="ProductsBaseModel.FK_ProductOrder_Product1" FromRole="Product" ToRole="ProductOrder" />
+          <NavigationProperty Name="ShipmentProduct" Relationship="ProductsBaseModel.FK_ShipmentProduct_Product" FromRole="Product" ToRole="ShipmentProduct" />
+          <NavigationProperty Name="SuppliersCountry" Relationship="ProductsBaseModel.ProductsCountries" FromRole="Product" ToRole="SuppliersCountry" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -448,24 +448,24 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="Quanity" Type="Int32" />
           <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Order" Relationship="ProductsSessionModel.FK_ProductOrder_Order1" FromRole="ProductOrder" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="ProductsSessionModel.FK_ProductOrder_Product1" FromRole="ProductOrder" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="ProductsBaseModel.FK_ProductOrder_Order1" FromRole="ProductOrder" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="ProductsBaseModel.FK_ProductOrder_Product1" FromRole="ProductOrder" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="ProductsSessionModel.FK_User_Role1" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="ProductsBaseModel.FK_User_Role1" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Shipment">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ShipmentProduct" Relationship="ProductsSessionModel.FK_ShipmentProduct_Shipment" FromRole="Shipment" ToRole="ShipmentProduct" />
+          <NavigationProperty Name="ShipmentProduct" Relationship="ProductsBaseModel.FK_ShipmentProduct_Shipment" FromRole="Shipment" ToRole="ShipmentProduct" />
         </EntityType>
         <EntityType Name="ShipmentProduct">
           <Key>
@@ -475,17 +475,17 @@
           <Property Name="ShipmentId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Quanity" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="ProductsSessionModel.FK_ShipmentProduct_Product" FromRole="ShipmentProduct" ToRole="Product" />
-          <NavigationProperty Name="Shipment" Relationship="ProductsSessionModel.FK_ShipmentProduct_Shipment" FromRole="ShipmentProduct" ToRole="Shipment" />
+          <NavigationProperty Name="Product" Relationship="ProductsBaseModel.FK_ShipmentProduct_Product" FromRole="ShipmentProduct" ToRole="Product" />
+          <NavigationProperty Name="Shipment" Relationship="ProductsBaseModel.FK_ShipmentProduct_Shipment" FromRole="ShipmentProduct" ToRole="Shipment" />
         </EntityType>
         <EntityType Name="SuppliersCountry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ColorHex" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="ProductsSessionModel.ProductsCountries" FromRole="SuppliersCountry" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="ProductsBaseModel.ProductsCountries" FromRole="SuppliersCountry" ToRole="Product" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -503,13 +503,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="ProductsSessionModel.FK_Product_UnitOfMeansurement1" FromRole="UnitOfMeansurement" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="ProductsBaseModel.FK_Product_UnitOfMeansurement1" FromRole="UnitOfMeansurement" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -519,14 +519,14 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Gender" Relationship="ProductsSessionModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
-          <NavigationProperty Name="Order" Relationship="ProductsSessionModel.FK_Order_User" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Order1" Relationship="ProductsSessionModel.FK_Order_User1" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Role" Relationship="ProductsSessionModel.FK_User_Role1" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Gender" Relationship="ProductsBaseModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="Order" Relationship="ProductsBaseModel.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="ProductsBaseModel.FK_Order_User1" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="ProductsBaseModel.FK_User_Role1" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_User_Gender">
-          <End Type="ProductsSessionModel.Gender" Role="Gender" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.User" Role="User" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="Id" />
@@ -537,8 +537,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_OrderStatus">
-          <End Type="ProductsSessionModel.OrderStatus" Role="OrderStatus" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.Order" Role="Order" Multiplicity="*" />
+          <End Type="ProductsBaseModel.OrderStatus" Role="OrderStatus" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderStatus">
               <PropertyRef Name="Id" />
@@ -549,8 +549,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_User">
-          <End Type="ProductsSessionModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.Order" Role="Order" Multiplicity="*" />
+          <End Type="ProductsBaseModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -561,8 +561,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_User1">
-          <End Type="ProductsSessionModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.Order" Role="Order" Multiplicity="*" />
+          <End Type="ProductsBaseModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -573,8 +573,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductOrder_Order1">
-          <End Type="ProductsSessionModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="ProductsSessionModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="ProductsBaseModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="Id" />
@@ -585,8 +585,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_UnitOfMeansurement1">
-          <End Type="ProductsSessionModel.UnitOfMeansurement" Role="UnitOfMeansurement" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="ProductsBaseModel.UnitOfMeansurement" Role="UnitOfMeansurement" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnitOfMeansurement">
               <PropertyRef Name="Id" />
@@ -597,8 +597,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductOrder_Product1">
-          <End Type="ProductsSessionModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="ProductsSessionModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ProductsBaseModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
@@ -609,8 +609,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShipmentProduct_Product">
-          <End Type="ProductsSessionModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="ProductsSessionModel.ShipmentProduct" Role="ShipmentProduct" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ProductsBaseModel.ShipmentProduct" Role="ShipmentProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
@@ -621,8 +621,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Role1">
-          <End Type="ProductsSessionModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="ProductsSessionModel.User" Role="User" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="ProductsBaseModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -633,8 +633,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShipmentProduct_Shipment">
-          <End Type="ProductsSessionModel.Shipment" Role="Shipment" Multiplicity="1" />
-          <End Type="ProductsSessionModel.ShipmentProduct" Role="ShipmentProduct" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Shipment" Role="Shipment" Multiplicity="1" />
+          <End Type="ProductsBaseModel.ShipmentProduct" Role="ShipmentProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shipment">
               <PropertyRef Name="Id" />
@@ -645,17 +645,17 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ProductsCountries">
-          <End Type="ProductsSessionModel.Product" Role="Product" Multiplicity="*" />
-          <End Type="ProductsSessionModel.SuppliersCountry" Role="SuppliersCountry" Multiplicity="*" />
+          <End Type="ProductsBaseModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="ProductsBaseModel.SuppliersCountry" Role="SuppliersCountry" Multiplicity="*" />
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ProductsSessionModelContainer" CdmEntityContainer="ProductsSessionEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ProductsBaseModelContainer" CdmEntityContainer="ProductsBaseEntities">
           <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="ProductsSessionModel.Gender">
+            <EntityTypeMapping TypeName="ProductsBaseModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -663,7 +663,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="ProductsSessionModel.Order">
+            <EntityTypeMapping TypeName="ProductsBaseModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="UserCustomer" ColumnName="UserCustomer" />
                 <ScalarProperty Name="UserExecutor" ColumnName="UserExecutor" />
@@ -674,7 +674,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderStatus">
-            <EntityTypeMapping TypeName="ProductsSessionModel.OrderStatus">
+            <EntityTypeMapping TypeName="ProductsBaseModel.OrderStatus">
               <MappingFragment StoreEntitySet="OrderStatus">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -682,7 +682,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="ProductsSessionModel.Product">
+            <EntityTypeMapping TypeName="ProductsBaseModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
                 <ScalarProperty Name="UnitOfMeansurementId" ColumnName="UnitOfMeansurementId" />
@@ -696,7 +696,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductOrder">
-            <EntityTypeMapping TypeName="ProductsSessionModel.ProductOrder">
+            <EntityTypeMapping TypeName="ProductsBaseModel.ProductOrder">
               <MappingFragment StoreEntitySet="ProductOrder">
                 <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
                 <ScalarProperty Name="Quanity" ColumnName="Quanity" />
@@ -706,7 +706,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="ProductsSessionModel.Role">
+            <EntityTypeMapping TypeName="ProductsBaseModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -714,7 +714,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shipment">
-            <EntityTypeMapping TypeName="ProductsSessionModel.Shipment">
+            <EntityTypeMapping TypeName="ProductsBaseModel.Shipment">
               <MappingFragment StoreEntitySet="Shipment">
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -722,7 +722,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShipmentProduct">
-            <EntityTypeMapping TypeName="ProductsSessionModel.ShipmentProduct">
+            <EntityTypeMapping TypeName="ProductsBaseModel.ShipmentProduct">
               <MappingFragment StoreEntitySet="ShipmentProduct">
                 <ScalarProperty Name="Quanity" ColumnName="Quanity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -731,7 +731,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SuppliersCountry">
-            <EntityTypeMapping TypeName="ProductsSessionModel.SuppliersCountry">
+            <EntityTypeMapping TypeName="ProductsBaseModel.SuppliersCountry">
               <MappingFragment StoreEntitySet="SuppliersCountry">
                 <ScalarProperty Name="ColorHex" ColumnName="ColorHex" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -740,7 +740,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ProductsSessionModel.sysdiagrams">
+            <EntityTypeMapping TypeName="ProductsBaseModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="definition" ColumnName="definition" />
                 <ScalarProperty Name="version" ColumnName="version" />
@@ -751,7 +751,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnitOfMeansurement">
-            <EntityTypeMapping TypeName="ProductsSessionModel.UnitOfMeansurement">
+            <EntityTypeMapping TypeName="ProductsBaseModel.UnitOfMeansurement">
               <MappingFragment StoreEntitySet="UnitOfMeansurement">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -759,7 +759,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="ProductsSessionModel.User">
+            <EntityTypeMapping TypeName="ProductsBaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -774,7 +774,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ProductsCountries" TypeName="ProductsSessionModel.ProductsCountries" StoreEntitySet="ProductsCountries">
+          <AssociationSetMapping Name="ProductsCountries" TypeName="ProductsBaseModel.ProductsCountries" StoreEntitySet="ProductsCountries">
             <EndProperty Name="SuppliersCountry">
               <ScalarProperty Name="Id" ColumnName="SuppliersCountryId" />
             </EndProperty>

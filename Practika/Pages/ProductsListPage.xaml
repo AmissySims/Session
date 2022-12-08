@@ -19,7 +19,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <TextBlock  Text="Количество записей" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock  Text="Количество записей"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="CountCb"   SelectedIndex="0" Margin="5" Width="50" Height="20" SelectionChanged="CountCb_SelectionChanged">
                     <ComboBoxItem  Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="10"/>
@@ -28,7 +28,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock  Text="Сортировка" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock  Text="Сортировка"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="SortCb"  SelectedIndex="0" Margin="5" Width="80" Height="20" SelectionChanged="SortCb_SelectionChanged">
                     <ComboBoxItem Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="От А до Я"/>
@@ -38,7 +38,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock  Text="Фильтрация" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock  Text="Фильтрация" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="FilterCb" SelectedIndex="0" Margin="5" Width="80" Height="20" SelectionChanged="FilterCb_SelectionChanged">
                     <ComboBoxItem Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="Кг"/>
@@ -51,56 +51,58 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock  Text="Поиск" Style="{StaticResource Text}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock  Text="Поиск"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBox x:Name="FoundTb" Width="120" Height="20" TextChanged="FoundTb_TextChanged" />
             </StackPanel>
         </StackPanel>
         <ListView Grid.Row="1" x:Name="ProductsList" d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding Products}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="690"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="44"/>
-                            <RowDefinition Height="41"/>
-                        </Grid.RowDefinitions>
-                        <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
-                        <TextBlock Style="{StaticResource Text}" Text="{Binding Title}" 
-                                   Grid.Column="1" HorizontalAlignment="Center"/>
-                        <ListBox Grid.Row="2" ItemsSource="{Binding Path=SuppliersCountry}">
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel IsItemsHost="True"/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10 0">
-                            <TextBlock Style="{StaticResource Text}" Text="{Binding Description}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource Text}" Text="{Binding Cost, StringFormat=F}" />
-                                <TextBlock Style="{StaticResource Text}" Text="{Binding DateOfAddition}" Margin="10 0"/>
-                                <TextBlock Style="{StaticResource Text}" Text="Ед. измерения:"/>
-                                <TextBlock Style="{StaticResource Text}" Text="{Binding UnitOfMeansurement.Title}" Margin="5 0"/>
-                                <TextBlock Style="{StaticResource Text}" Text="Количество:" Margin="5 0"/>
-                                <TextBlock Style="{StaticResource Text}" Text="{Binding QuantityInStock}" Margin="5 0"/>
+                    <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="690"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="44"/>
+                                <RowDefinition Height="41"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
+                            <TextBlock Text="{Binding Title}" 
+                                       Grid.Column="1" HorizontalAlignment="Center"/>
+                            <ListBox Grid.Row="2" ItemsSource="{Binding Path=SuppliersCountry}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10 0">
+                                <TextBlock  Text="{Binding Description}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Cost, StringFormat=F}" />
+                                    <TextBlock  Text="{Binding DateOfAddition}" Margin="10 0"/>
+                                    <TextBlock  Text="Ед. измерения:"/>
+                                    <TextBlock  Text="{Binding UnitOfMeansurement.Title}" Margin="5 0"/>
+                                    <TextBlock  Text="Количество:" Margin="5 0"/>
+                                    <TextBlock Text="{Binding QuantityInStock}" Margin="5 0"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10 0">
-                            <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
-                                    HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="{Binding Path=BtnVisible}" Margin="5" Click="CreateBtn_Click"/>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10 0">
+                                <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
+                                        HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="{Binding Path=BtnVisible}" Margin="5" Click="CreateBtn_Click"/>
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -110,7 +112,8 @@
                     Content="Добавить" Click="AddProductBtn_Click"/>
             <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
                      Style="{StaticResource MyButton}" Click="OrderBtn_Click"/>
-
+            <Button x:Name="AllOrdersBtn" Style="{StaticResource MyButton}"
+                    Content="Заказы" Click="AllOrdersBtn_Click"/>
             <Button x:Name="RightBtn" Content="&gt;"  
                     Click="RightBtn_Click"/>
             <StackPanel Orientation="Horizontal" Margin="20 0">
