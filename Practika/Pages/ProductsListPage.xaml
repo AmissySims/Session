@@ -58,7 +58,7 @@
         <ListView Grid.Row="1" x:Name="ProductsList" d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding Products}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2">
+                    <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2" Background="{Binding ColorDis}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
