@@ -43,8 +43,13 @@ namespace Practika.Pages
         {
             DBConnect.db.Product.Load();
             Products = DBConnect.db.Product.Local;
-            
+           
+                
             InitializeComponent();
+            if (Navigation.User.RoleId == 1)
+                AddProductBtn.Visibility = Visibility.Collapsed;
+                
+
             GeneralCount.Text = DBConnect.db.Product.Count().ToString();
 
         }
@@ -72,7 +77,18 @@ namespace Practika.Pages
                     case "3":
                         products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 2));
                         break;
-                 
+                    case "4":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 3));
+                        break;
+                    case "5":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 4));
+                        break;
+                    case "6":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 5));
+                        break;
+                    case "7":
+                        products = new ObservableCollection<Product>(Products.Where(x => x.UnitOfMeansurementId == 6));
+                        break;
                     default:
                         break;
                 }
@@ -135,9 +151,9 @@ namespace Practika.Pages
             {
                 products = new ObservableCollection<Product>(Products.Where(x => x.Title.ToLower().StartsWith(FoundTb.Text.ToLower()) || x.Description.ToLower().StartsWith(FoundTb.Text.ToLower())));
             }
-            ProductsList.ItemsSource = products.ToList();
+           
             Products = products;
-            
+             ProductsList.ItemsSource = products.ToList();
             FoundCount.Text = products.Count().ToString() + " из ";
         }
 

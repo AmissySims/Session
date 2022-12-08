@@ -33,12 +33,12 @@
                     <TextBox Text="{Binding product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Text}" Text="Ед. измерения"/>
+                    <TextBlock Style="{StaticResource Text}" Text="Ед. измерения" Margin="5 0"/>
                     <ComboBox
                         x:Name="EditUnitOfMeansurement"
                         ItemsSource="{Binding MeasureUnits}"
                         SelectedIndex="{Binding product.UnitOfMeansurementId}"
-                        SelectionChanged="FilterProduct_SelectionChanged_1" Margin="5">
+                        SelectionChanged="FilterProduct_SelectionChanged_1" Margin="5" Height="20">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <ComboBoxItem Tag="{Binding Title}"
@@ -48,7 +48,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource Text}" Text="Количество"/>
+                    <TextBlock Style="{StaticResource Text}" Text="Количество" Margin="5 0"/>
                     <TextBox Text="{Binding product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />

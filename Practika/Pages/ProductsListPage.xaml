@@ -43,6 +43,10 @@
                     <ComboBoxItem Tag="1" Content="Все"/>
                     <ComboBoxItem Tag="2" Content="Кг"/>
                     <ComboBoxItem Tag="3" Content="Шт"/>
+                    <ComboBoxItem Tag="4" Content="Литр."/>
+                    <ComboBoxItem Tag="5" Content="Гр"/>
+                    <ComboBoxItem Tag="6" Content="Тонн."/>
+                    <ComboBoxItem Tag="7" Content="Набор"/>
 
                 </ComboBox>
             </StackPanel>
@@ -92,7 +96,7 @@
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10 0">
                             <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
-                                    HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="CreateBtn_Click"/>
+                                    HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="{Binding Path=SuppliersCountry}" Margin="5" Click="CreateBtn_Click"/>
 
                         </StackPanel>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Practika.Components
@@ -21,5 +22,28 @@ namespace Practika.Components
                 return _brush;
             }
         }
+
+
+        public Visibility BtnVisible
+        {
+            get
+            {
+                if (Navigation.User.RoleId == 1) 
+                    return Visibility.Collapsed;
+                else
+                    return Visibility.Visible;
+            }
+        }
+
+        //public string ColorDis
+        //{
+        //    get
+        //    {
+        //        if (QuanityInStock == 0 || QuanityInStock == null)
+        //            return "#ffffff";
+        //        else
+        //            return "#D1FFD1";
+        //    }
+        //}
     }
 }
