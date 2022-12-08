@@ -56,10 +56,10 @@ namespace Practika.Pages
         private void Refresh()
         {
             ObservableCollection<Product> products = Products;
-            //if (FilterCb == null)
-            //    return;
-            //if (SortCb == null)
-            //    return;
+            if (FilterCb == null)
+                return;
+            if (SortCb == null)
+                return;
             if (FoundTb == null)
                 return;
             if (CountCb == null)
