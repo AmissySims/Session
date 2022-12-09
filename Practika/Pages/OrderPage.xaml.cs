@@ -28,6 +28,8 @@ namespace Practika.Pages
         public Order order { get; set; }
         public List<OrderStatus> OrderStatuses { get; set; }
         public List<User> Users { get; set; }
+        public List<Product> Products { get; set; }
+
 
         public OrderPage(Order _order)
         {
@@ -35,6 +37,8 @@ namespace Practika.Pages
             OrderStatuses = DBConnect.db.OrderStatus.Local.ToList();
             DBConnect.db.User.Load();
             Users = DBConnect.db.User.Local.ToList();
+            DBConnect.db.Product.Load();
+            Products = DBConnect.db.Product.Local.ToList();
             order = _order;
             InitializeComponent();
         }
@@ -62,6 +66,11 @@ namespace Practika.Pages
         private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void QuTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
         }
 
         //private void UserExCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

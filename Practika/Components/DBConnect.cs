@@ -9,7 +9,7 @@ namespace Practika.Components
 {
     internal class DBConnect
     {
-        public static ProductsBaseEntities db = new ProductsBaseEntities();
+        public static ProductsSession1Entities db = new ProductsSession1Entities();
 
         public DBConnect()
         {

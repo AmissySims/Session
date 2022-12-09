@@ -13,10 +13,10 @@ namespace Practika.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProductsBaseEntities : DbContext
+    public partial class ProductsSession1Entities : DbContext
     {
-        public ProductsBaseEntities()
-            : base("name=ProductsBaseEntities")
+        public ProductsSession1Entities()
+            : base("name=ProductsSession1Entities")
         {
         }
     
@@ -34,8 +34,8 @@ namespace Practika.Components
         public virtual DbSet<Shipment> Shipment { get; set; }
         public virtual DbSet<ShipmentProduct> ShipmentProduct { get; set; }
         public virtual DbSet<SuppliersCountry> SuppliersCountry { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UnitOfMeansurement> UnitOfMeansurement { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public object ProductsCountries { get; internal set; }
     }
 }
