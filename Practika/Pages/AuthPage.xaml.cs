@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Practika.Pages
 {
@@ -21,6 +22,7 @@ namespace Practika.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        DispatcherTimer timer = new DispatcherTimer();
         public AuthPage()
         {
             InitializeComponent();
@@ -32,19 +34,22 @@ namespace Practika.Pages
 
         private void EntrBtn_Click(object sender, RoutedEventArgs e)
         {
-            User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
+            int countAuto = Properties.Settings.Default.CountAuth;
+            if(countAuto < 3) 
+            { 
+                User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
 
-            if (user == null)
-            {
-                MessageBox.Show("Логин или пароль неверный");
-                return;
-            }
-            else
-            {
-               
-                
-                
-                
+                if (user == null)
+                {
+                    MessageBox.Show("Логин или пароль неверный");
+                    return;
+                }
+                else
+                {
+
+
+
+
                     if (SaveCb.IsChecked == true)
                     {
                         Properties.Settings.Default.Login = LoginTb.Text;
@@ -60,9 +65,20 @@ namespace Practika.Pages
                     Navigation.User = user;
 
                     Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
-                
 
-                
+
+
+                }  
+            }
+            else
+            {
+                MessageBox.Show("Вы ввели 3 раза неправильный пароль\nВход заблокировани на 1 минуту", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                countAuto = 0;
+                EntrBtn.IsEnabled = false;
+                RegisBtn.IsEnabled = false;
+                timer.Interval = new TimeSpan(0, 1, 0);
+                timer.Tick += new EventHandler(isVisibleBTN);
+                timer.Start();
             }
         }
         private void RegisBtn_Click(object sender, RoutedEventArgs e)
