@@ -94,7 +94,7 @@ namespace Practika.Pages
 
             }
             AllOrders = orders;
-            OrdersList.ItemsSource = orders.ToList();
+            //OrdersList.ItemsSource = orders.ToList();
         }
         private void OrderCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

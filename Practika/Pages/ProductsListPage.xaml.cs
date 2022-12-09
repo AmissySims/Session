@@ -96,9 +96,9 @@ namespace Practika.Pages
                 }
                 
             }
-            ProductsList.ItemsSource = products.ToList();
+            Products = products;
 
-
+            //ProductsList.ItemsSource = products.ToList();
 
             if (SortCb.SelectedItem != null)
             {
@@ -126,9 +126,9 @@ namespace Practika.Pages
 
 
             }
-            
+            Products = products;
 
-            
+            //ProductsList.ItemsSource = products.ToList();
             if (CountCb.SelectedIndex > -1 && products.Count() > 0)
             {
                 int selCount;
@@ -155,7 +155,7 @@ namespace Practika.Pages
             }
            
             Products = products;
-            ProductsList.ItemsSource = products.ToList();
+            
             FoundCount.Text = products.Count().ToString() + " из ";
         }
 
