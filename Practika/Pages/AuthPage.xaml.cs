@@ -77,7 +77,7 @@ namespace Practika.Pages
                 EntrBtn.IsEnabled = false;
                 RegisBtn.IsEnabled = false;
                 timer.Interval = new TimeSpan(0, 1, 0);
-                timer.Tick += new EventHandler(isVisibleBTN);
+                //timer.Tick += new EventHandler(isVisibleBTN);
                 timer.Start();
             }
         }
