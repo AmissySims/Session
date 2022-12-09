@@ -5,13 +5,68 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Practika.Pages"
       mc:Ignorable="d" 
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel>
-                
+        <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top"  Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                            <TextBlock Text="Дата" />
+                            <TextBox x:Name="DateTb" Text="{Binding order.Date}" Width="50" Margin="5 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                            <TextBlock Text="Статус заказа"/>
+                            <ComboBox x:Name="StatusCb" ItemsSource="{Binding OrderStatuses}"
+                                      SelectedItem="{Binding order.OrderStatusId}" SelectionChanged="StatusCb_SelectionChanged" Margin="5 0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBoxItem Tag="{Binding Title}"
+                                                  Content="{Binding Title}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right"   >
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                            <TextBlock Text="Исполнитель" />
+                            <TextBox x:Name="UserTb" Text="{Binding order.User}" Width="100" Margin="5 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                            <TextBlock Text="Заказчик"  />
+                            <TextBox x:Name="User1Tb" Text="{Binding order.User1}" Width="100" Margin="5 0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <ListBox ItemsSource="{Binding order.ProductOrders}" Width="500" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border   BorderThickness="1"  >
+                                <StackPanel>
+                                    <TextBlock Text="{Binding product.Product.Title}"/>
+                                    <TextBlock Text="{Binding product.Quanity}"/>
+                                    <TextBlock Text="{Binding product.PurchasePrice}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Button x:Name="SaveOrderBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveOrderBtn_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

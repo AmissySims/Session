@@ -69,5 +69,15 @@ namespace Practika.Pages
 
             product.UnitOfMeansurement = EditUnitOfMeansurement.SelectedItem as UnitOfMeansurement;
         }
+
+        private void AddCountryBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCountryBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

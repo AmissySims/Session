@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,22 +25,31 @@ namespace Practika.Pages
     {
 
 
-        public ObservableCollection<Order> Orders
+        public Order order { get; set; }
+        public List<OrderStatus> OrderStatuses { get; set; }
+
+
+        public OrderPage(Order _order)
         {
-            get { return (ObservableCollection<Order>)GetValue(OrdersProperty); }
-            set { SetValue(OrdersProperty, value); }
+            DBConnect.db.OrderStatus.Load();
+            OrderStatuses = DBConnect.db.OrderStatus.Local.ToList();
+            order = _order;
+            InitializeComponent();
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty OrdersProperty =
-            DependencyProperty.Register("Orders", typeof(ObservableCollection<Order>), typeof(OrderPage));
-
-
-        public OrderPage()
+        private void StatusCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //DBConnect.db.Order.Load();
-            //Orders = DBConnect.db.Order.Local;
-            InitializeComponent();
+            if(Navigation.User.RoleId == 1)
+            {
+                StatusCb.SelectedIndex = 0;
+            }
+        }
+
+        private void SaveOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DBConnect.db.Order.Local.Add(order);
+            DBConnect.db.SaveChanges();
+            MessageBox.Show("Сохранено");
         }
     }
 }

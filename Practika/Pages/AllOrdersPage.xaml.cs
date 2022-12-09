@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,63 @@ namespace Practika.Pages
             DBConnect.db.Order.Load();
             AllOrders = DBConnect.db.Order.Local;
             InitializeComponent();
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new Order())));
+        }
+
+        private void CreateOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selorder = (sender as Button).DataContext as Order;
+            Navigation.NextPage(new Nav("Редактирование", new OrderPage(selorder)));
+        }
+
+        public void Refresh()
+        {
+            ObservableCollection<Order> orders = AllOrders;
+            if (OrderCb == null)
+                return;
+            if (OrderCb.SelectedItem != null)
+            {
+                switch ((OrderCb.SelectedItem as ComboBoxItem).Tag)
+                {
+                    case "1":
+                        orders = DBConnect.db.Order.Local;
+                        break;
+                    case "2":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 1));
+                        break;
+                    case "3":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 2));
+                        break;
+                    case "4":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 3));
+                        break;
+                    case "5":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 4));
+                        break;
+                    case "6":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 5));
+                        break;
+                    case "7":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 6));
+                        break;
+                    case "8":
+                        orders = new ObservableCollection<Order>(AllOrders.Where(x => x.OrderStatusId == 7));
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            AllOrders = orders;
+            OrdersList.ItemsSource = orders.ToList();
+        }
+        private void OrderCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

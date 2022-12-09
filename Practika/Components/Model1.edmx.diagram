@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5008f9073e084ccbadfee522e9378bee" Name="Diagram1">
-        <EntityTypeShape EntityType="ProductsBaseModel.Gender" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="ProductsBaseModel.Gender" Width="1.5" PointX="0.75" PointY="6.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.Order" Width="1.5" PointX="5.25" PointY="1.5" />
         <EntityTypeShape EntityType="ProductsBaseModel.OrderStatus" Width="1.5" PointX="3" PointY="6.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.Product" Width="1.5" PointX="5.25" PointY="9.25" />
         <EntityTypeShape EntityType="ProductsBaseModel.ProductOrder" Width="1.5" PointX="7.5" PointY="1.75" />
-        <EntityTypeShape EntityType="ProductsBaseModel.Role" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ProductsBaseModel.Role" Width="1.5" PointX="0.75" PointY="2.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="9.875" />
         <EntityTypeShape EntityType="ProductsBaseModel.SuppliersCountry" Width="1.5" PointX="7.5" PointY="12.75" />

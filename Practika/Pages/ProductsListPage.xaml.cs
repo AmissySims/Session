@@ -96,9 +96,9 @@ namespace Practika.Pages
                 }
                 
             }
-            Products = products;
+            ProductsList.ItemsSource = products.ToList();
 
-            //ProductsList.ItemsSource = products.ToList();
+
 
             if (SortCb.SelectedItem != null)
             {
@@ -126,9 +126,9 @@ namespace Practika.Pages
 
 
             }
-            Products = products;
+            
 
-            //ProductsList.ItemsSource = products.ToList();
+            
             if (CountCb.SelectedIndex > -1 && products.Count() > 0)
             {
                 int selCount;
@@ -148,14 +148,14 @@ namespace Practika.Pages
                 }
             }
 
-            ProductsList.ItemsSource = products.ToList();
+            
             if (FoundTb.Text.Length > 0)
             {
                 products = new ObservableCollection<Product>(Products.Where(x => x.Title.ToLower().StartsWith(FoundTb.Text.ToLower()) || x.Description.ToLower().StartsWith(FoundTb.Text.ToLower())));
             }
            
             Products = products;
-             ProductsList.ItemsSource = products.ToList();
+            ProductsList.ItemsSource = products.ToList();
             FoundCount.Text = products.Count().ToString() + " из ";
         }
 
@@ -209,7 +209,7 @@ namespace Practika.Pages
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage()));
+            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new Order())));
         }
 
         private void AllOrdersBtn_Click(object sender, RoutedEventArgs e)

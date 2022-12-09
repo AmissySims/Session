@@ -11,23 +11,26 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="419*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="363*"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,5">
             <TextBlock Text="Фильтр по статусу"/>
-            <ComboBox x:Name="OrderCb" Margin="5 0" Width="50" Height="20">
-                <ComboBoxItem Tag="1" Content="Новый"/>
-                <ComboBoxItem Tag="2" Content="Обработка"/>
-                <ComboBoxItem Tag="3" Content="Отклонен"/>
-                <ComboBoxItem Tag="4" Content="К оплате"/>
-                <ComboBoxItem Tag="5" Content="Оплачен"/>
-                <ComboBoxItem Tag="6" Content="Выполнение"/>
-                <ComboBoxItem Tag="7" Content="Готов"/>
+            <ComboBox x:Name="OrderCb" Margin="5 0" Width="50" Height="20" SelectedIndex="0" 
+                      SelectionChanged="OrderCb_SelectionChanged">
+                <ComboBoxItem Tag="1" Content="Все"/>
+                <ComboBoxItem Tag="2" Content="Новый"/>
+                <ComboBoxItem Tag="3" Content="Обработка"/>
+                <ComboBoxItem Tag="4" Content="Отклонен"/>
+                <ComboBoxItem Tag="5" Content="К оплате"/>
+                <ComboBoxItem Tag="6" Content="Оплачен"/>
+                <ComboBoxItem Tag="7" Content="Выполнение"/>
+                <ComboBoxItem Tag="8" Content="Готов"/>
 
             </ComboBox>
         </StackPanel>
-        <ListView x:Name="OrdersList" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding AllOrders}" Grid.RowSpan="2" >
+        <ListView x:Name="OrdersList" Grid.Row="1"  d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding AllOrders}"  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2" >
@@ -69,14 +72,25 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                                <TextBlock  Text="{Binding TotalSum, StringFormat='{} Общая сумма: {0:f} руб.'}"/>
-                                <TextBlock Margin="10 0" Text="{Binding Quanity, StringFormat='{} Общее количество продуктов: {0}'}"/>
+                            <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock  Text="{Binding TotalSum, StringFormat='{} Общая сумма: {0:f} руб.'}"/>
+                                    <TextBlock Margin="10 0" Text="{Binding Quanity, StringFormat='{} Общее количество продуктов: {0}'}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="CreateOrderBtn" Content="Редактировать"
+                                        Style="{StaticResource MyButton}" Visibility="{Binding Path=BtnVisible}" Click="CreateOrderBtn_Click" />
+                                </StackPanel>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button   x:Name="OrderBtn"  Content="Оформить заказ" 
+                     Style="{StaticResource MyButton}" Click="OrderBtn_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

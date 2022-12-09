@@ -34,6 +34,7 @@ namespace Practika.Components
                 return this.ProductOrder.Sum(x => x.Quanity * x.PurchasePrice);
             }
         }
+       
     }
 }
   

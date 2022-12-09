@@ -648,7 +648,7 @@
           <End Type="ProductsBaseModel.Product" Role="Product" Multiplicity="*" />
           <End Type="ProductsBaseModel.SuppliersCountry" Role="SuppliersCountry" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
