@@ -35,8 +35,8 @@ namespace Practika.Pages
         private void EntrBtn_Click(object sender, RoutedEventArgs e)
         {
             int countAuto = Properties.Settings.Default.CountAuth;
-            if(countAuto < 3) 
-            { 
+            if (countAuto < 3)
+            {
                 User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
 
                 if (user == null)
@@ -68,23 +68,93 @@ namespace Practika.Pages
 
 
 
-                }  
+                }
             }
-            else
-            {
-                MessageBox.Show("Вы ввели 3 раза неправильный пароль\nВход заблокировани на 1 минуту", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                countAuto = 0;
-                EntrBtn.IsEnabled = false;
-                RegisBtn.IsEnabled = false;
-                timer.Interval = new TimeSpan(0, 1, 0);
-                //timer.Tick += new EventHandler(isVisibleBTN);
-                timer.Start();
-            }
-        }
+            //else
+            //{
+            //    MessageBox.Show("Вы ввели 3 раза неправильный пароль\nВход заблокировани на 1 минуту", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    countAuto = 0;
+            //    EntrBtn.IsEnabled = false;
+            //    RegisBtn.IsEnabled = false;
+            //    timer.Interval = new TimeSpan(0, 1, 0);
+            //    timer.Tick += new EventHandler(isVisibleBTN);
+            //    timer.Start();
+            //}
+            //    int CountAuto = Properties.Settings.Default.CountAuth;
+
+            //    string login = LoginTb.Text.Trim();
+            //    string password = PasswordTb.Text.Trim();
+
+            //    if (CountAuto < 3)
+            //    {
+            //        if (LoginTb.Text != null || PasswordTb.Text != null)
+            //        {
+            //            User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Text.Trim());
+            //            if (user == null)
+            //            {
+            //                if (SaveCb.IsChecked == true)
+            //                {
+            //                    Properties.Settings.Default.Login = LoginTb.Text;
+            //                    Properties.Settings.Default.Password = PasswordTb.Text;
+            //                    Properties.Settings.Default.Save();
+            //                }
+            //                else
+            //                {
+            //                    Properties.Settings.Default.Login = null;
+            //                    Properties.Settings.Default.Password = null;
+            //                    Properties.Settings.Default.Save();
+            //                }
+
+            //                Navigation.User = user;
+            //                Navigation.NextPage(new Nav("Продукты", new ProductsListPage()));
+            //                CountAuto = 0;
+            //            }
+            //            else
+            //            {
+            //                CountAuto += 1;
+            //                Properties.Settings.Default.CountAuth = CountAuto;
+            //                MessageBox.Show("Такого пользователя нет", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Не заполнены поля", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Вы ввели 3 раза неправильный пароль\nВход заблокировани на 1 минуту", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            //        CountAuto = 0;
+            //        EntrBtn.IsEnabled = false;
+            //        RegisBtn.IsEnabled = false;
+            //        timer.Interval = new TimeSpan(0, 1, 0);
+            //        timer.Tick += new EventHandler(isVisibleBTN);
+            //        timer.Start();
+            //    }
+
+
+            //}
+            
+           
+        } 
+        //private void isVisibleBTN(object sender, EventArgs e)
+            //{
+            //    EntrBtn.IsEnabled = true;
+            //    RegisBtn.IsEnabled = true;
+            //    timer.Stop();
+            //}
         private void RegisBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Navigation.NextPage(new Nav("Регистрация", new RegPage()));
-        }
+            {
+                Navigation.NextPage(new Nav("Регистрация", new RegPage()));
+            }
     }
 }
+        
+
+
+        
+    
+
 

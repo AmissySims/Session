@@ -52,22 +52,28 @@
                     <TextBox Text="{Binding product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="5 0">
-                    <ListBox ItemsSource="{Binding Path=product.SuppliersCountry}">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True"/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <StackPanel>
+                        <Label Content="Страны продукта"/>
+                        <ListView x:Name="CountriesList" ItemsSource="{Binding Path=product.SuppliersCountry}" d:ItemsSource="{d:SampleData ItemCount=5}" >
+                           
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                  
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="AddCountryBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddCountryBtn_Click"/>
                         <Button x:Name="DeleteCountryBtn" Style="{StaticResource MyButton}" Content="Удалить" Click="DeleteCountryBtn_Click"/>
-
+                        <ComboBox ItemsSource="{Binding Country}" Width="100" Margin="10 0" x:Name="CountryListCb" SelectionChanged="CountryListCb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <ComboBoxItem Tag="{Binding Title}" Content="{Binding Title}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
                 <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />

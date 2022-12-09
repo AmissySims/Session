@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="ProductsBaseModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="9.875" />
         <EntityTypeShape EntityType="ProductsBaseModel.SuppliersCountry" Width="1.5" PointX="7.5" PointY="12.75" />
-        <EntityTypeShape EntityType="ProductsBaseModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" />
         <EntityTypeShape EntityType="ProductsBaseModel.UnitOfMeansurement" Width="1.5" PointX="3" PointY="10.125" />
         <EntityTypeShape EntityType="ProductsBaseModel.User" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="ProductsBaseModel.FK_User_Gender" />

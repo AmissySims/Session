@@ -34,8 +34,8 @@ namespace Practika.Components
         public virtual DbSet<Shipment> Shipment { get; set; }
         public virtual DbSet<ShipmentProduct> ShipmentProduct { get; set; }
         public virtual DbSet<SuppliersCountry> SuppliersCountry { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UnitOfMeansurement> UnitOfMeansurement { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public object ProductsCountries { get; internal set; }
     }
 }

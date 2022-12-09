@@ -27,12 +27,14 @@ namespace Practika.Pages
 
         public Order order { get; set; }
         public List<OrderStatus> OrderStatuses { get; set; }
-
+        public List<User> Users { get; set; }
 
         public OrderPage(Order _order)
         {
             DBConnect.db.OrderStatus.Load();
             OrderStatuses = DBConnect.db.OrderStatus.Local.ToList();
+            DBConnect.db.User.Load();
+            Users = DBConnect.db.User.Local.ToList();
             order = _order;
             InitializeComponent();
         }
@@ -51,5 +53,25 @@ namespace Practika.Pages
             DBConnect.db.SaveChanges();
             MessageBox.Show("Сохранено");
         }
+
+        private void AddProductBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //private void UserExCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    order.User = UserExCb.SelectedItem as User;
+        //}
+
+        //private void UserCuCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    order.User1 = UserCuCb.SelectedItem as User;
+        //}
     }
 }

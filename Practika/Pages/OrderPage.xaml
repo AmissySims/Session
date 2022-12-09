@@ -10,9 +10,14 @@
       Title="OrderPage">
 
     <Grid>
-        <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top"  Orientation="Horizontal">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="360*"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Width="322">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top"  Orientation="Horizontal" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
                             <TextBlock Text="Дата" />
@@ -36,17 +41,35 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
                             <TextBlock Text="Исполнитель" />
-                            <TextBox x:Name="UserTb" Text="{Binding order.User}" Width="100" Margin="5 0"/>
+                            <TextBox x:Name="UserTb" Margin="5 0" Width="100" Text="{Binding order.User.FullName}"/>
+                            <!--<ComboBox x:Name="UserExCb" ItemsSource="{Binding order}"
+                                      SelectedItem="{Binding order.User.FullName}"  Margin="5 0" SelectionChanged="UserExCb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBoxItem Tag="{Binding Title}"
+                                                  Content="{Binding Title}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>-->
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
                             <TextBlock Text="Заказчик"  />
-                            <TextBox x:Name="User1Tb" Text="{Binding order.User1}" Width="100" Margin="5 0"/>
+                            <TextBox x:Name="User1Tb" Margin="5 0" Width="100" Text="{Binding order.User1.FullName}"/>
+                            <!--<ComboBox x:Name="UserCuCb" ItemsSource="{Binding order}"
+                                      SelectedItem="{Binding order.User1.FullName}"  Margin="5 0" Width="30" SelectionChanged="UserCuCb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBoxItem Tag="{Binding Title}"
+                                                  Content="{Binding Title}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>-->
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <ListBox ItemsSource="{Binding order.ProductOrders}" Width="500" >
+            <!--<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <ListBox ItemsSource="{Binding Path=order.ProductOrders}" Width="500" d:ItemsSource="{d:SampleData ItemCount=5}" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel IsItemsHost="True"/>
@@ -64,10 +87,68 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button x:Name="SaveOrderBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveOrderBtn_Click"/>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AddProductBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddProductBtn_Click"/>
+                    <Button x:Name="DeleteProductBtn" Style="{StaticResource MyButton}" Content="Удалить" Click="DeleteProductBtn_Click"/>
+                </StackPanel>
+            </StackPanel>-->
+
+        </StackPanel>
+        <ListView Grid.Row="1" x:Name="ProductsList" d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding Products}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2" Background="{Binding ColorDis}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="690"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="44"/>
+                                <RowDefinition Height="41"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
+                            <TextBlock Text="{Binding Title}" 
+                                       Grid.Column="1" HorizontalAlignment="Center"/>
+                            <ListBox Grid.Row="2" ItemsSource="{Binding Path=SuppliersCountry}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10 0">
+                                <TextBlock  Text="{Binding Description}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Cost, StringFormat=F}" />
+                                    <TextBlock  Text="{Binding DateOfAddition}" Margin="10 0"/>
+                                    <TextBlock  Text="Ед. измерения:"/>
+                                    <TextBlock  Text="{Binding UnitOfMeansurement.Title}" Margin="5 0"/>
+                                    <TextBlock  Text="Количество:" Margin="5 0"/>
+                                    <TextBlock Text="{Binding QuantityInStock}" Margin="5 0"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10 0">
+                                <Button Style="{StaticResource MyButton}" x:Name="CreateBtn" Content="Редактировать"
+                                        HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="{Binding Path=BtnVisible}" Margin="5" Click="CreateBtn_Click"/>
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="SaveOrderBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveOrderBtn_Click"/>
+            <Button x:Name="AddProductInOrderBtn" Style="{StaticResource MyButton}" Content="Добавить"/>
+            <Button x:Name="DeleteProductInOrderBtn" Style="{StaticResource MyButton}" Content="Удалить"/>
         </StackPanel>
     </Grid>
 </Page>
