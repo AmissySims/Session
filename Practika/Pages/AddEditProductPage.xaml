@@ -55,7 +55,12 @@
                     <StackPanel>
                         <Label Content="Страны продукта"/>
                         <ListView x:Name="CountriesList" ItemsSource="{Binding Path=product.SuppliersCountry}" d:ItemsSource="{d:SampleData ItemCount=5}" >
-                           
+
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
@@ -64,7 +69,7 @@
                         </ListView>
                     </StackPanel>
                   
-                    <StackPanel Orientation="Horizontal">
+                    <!--<StackPanel Orientation="Horizontal">
                         <Button x:Name="AddCountryBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddCountryBtn_Click"/>
                         <Button x:Name="DeleteCountryBtn" Style="{StaticResource MyButton}" Content="Удалить" Click="DeleteCountryBtn_Click"/>
                         <ComboBox ItemsSource="{Binding Country}" Width="100" Margin="10 0" x:Name="CountryListCb" SelectionChanged="CountryListCb_SelectionChanged">
@@ -74,7 +79,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                    </StackPanel>
+                    </StackPanel>-->
                 </StackPanel>
                 <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />
             </StackPanel>

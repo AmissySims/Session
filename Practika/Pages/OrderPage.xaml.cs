@@ -61,6 +61,23 @@ namespace Practika.Pages
         private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            
+            //if (ProductsList.SelectedItem != null)
+            //{
+            //    var product = ProductsList.SelectedItem as Product;
+            //    ProductOrder productOrder = new ProductOrder
+            //    {
+            //        Product = product,
+            //        Order = order
+            //    };
+            //    DBConnect.db.ProductOrder.Add(productOrder);
+            //    // DBConnect.db.SaveChanges();
+            //    MessageBox.Show("Сохранено");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Выберите продукт");
+            //}
         }
 
         private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
@@ -68,10 +85,7 @@ namespace Practika.Pages
 
         }
 
-        private void QuTb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-        }
+
 
         //private void UserExCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{

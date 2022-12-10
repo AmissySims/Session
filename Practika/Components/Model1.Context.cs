@@ -37,5 +37,6 @@ namespace Practika.Components
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UnitOfMeansurement> UnitOfMeansurement { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public object ProductsCountries { get; internal set; }
     }
 }

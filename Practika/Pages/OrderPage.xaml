@@ -86,7 +86,7 @@
                                     <TextBlock Text="Закупочная цена"/>
                                     <TextBox Margin="10 0" x:Name="PPTb" Text="{Binding PurchasePrice}"/>
                                     <TextBlock Text="Количество"></TextBlock>
-                                    <TextBox Margin="10 0" x:Name="QuTb" Text="{Binding Quanity}" TextChanged="QuTb_TextChanged"/>
+                                    <TextBox Margin="10 0" x:Name="QuTb" Text="{Binding Quanity}" />
                                 </StackPanel>
                                 
                             </StackPanel>

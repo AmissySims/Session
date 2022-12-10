@@ -16,7 +16,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Margin="5" Text="Пароль"/>
-                <TextBox x:Name="PasswordTb" Margin="5" Padding="2" Width="200"></TextBox>
+                <PasswordBox x:Name="PasswordTb" Margin="5" Padding="2" Width="200"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="True" x:Name="SaveCb" Margin="10"></CheckBox>
