@@ -34,31 +34,7 @@ namespace Practika.Pages
 
         private void RegistBtn_Click(object sender, RoutedEventArgs e)
         {
-            //if (DBConnect.db.User.Local.Any(x => x.Login == LoginTb.Text.Trim() &&
-            //                                x.Email == EmailTb.Text.Trim() && 
-            //                                x.Phone == PhoneTb.Text.Trim()))
-            //{
-            //    MessageBox.Show("Такой пользователь существует");
-            //    return;
-            //}
-            //User user = new User()
-            //{
-            //    Login = LoginTb.Text.Trim(),
-            //    Password = PasswordTb.Text.Trim(),
-            //    Email = EmailTb.Text.Trim(),
-            //    Phone = PhoneTb.Text.Trim(),
-            //    FirstName = FirstNameTb.Text.Trim(),
-            //    LastName = LastNameTb.Text.Trim(),
-            //    Patronymic = PatronymicTb.Text.Trim(),
-            //    GenderId = GenderCb.SelectedIndex + 1,
-            //    RoleId = 1
-            //};
-
-            //DBConnect.db.User.Local.Add(user);
-
-            //Navigation.User = user;
-
-            //DBConnect.db.SaveChanges();
+           
             string login = LoginTb.Text.Trim();
             string password = PasswordTb.Text.Trim();
             string firstname = FirstNameTb.Text.Trim();

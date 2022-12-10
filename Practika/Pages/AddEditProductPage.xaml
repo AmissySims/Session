@@ -69,17 +69,7 @@
                         </ListView>
                     </StackPanel>
                   
-                    <!--<StackPanel Orientation="Horizontal">
-                        <Button x:Name="AddCountryBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddCountryBtn_Click"/>
-                        <Button x:Name="DeleteCountryBtn" Style="{StaticResource MyButton}" Content="Удалить" Click="DeleteCountryBtn_Click"/>
-                        <ComboBox ItemsSource="{Binding Country}" Width="100" Margin="10 0" x:Name="CountryListCb" SelectionChanged="CountryListCb_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <ComboBoxItem Tag="{Binding Title}" Content="{Binding Title}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </StackPanel>-->
+                    
                 </StackPanel>
                 <Button x:Name="SaveBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveBtn_Click" />
             </StackPanel>
