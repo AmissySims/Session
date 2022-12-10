@@ -26,7 +26,7 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
                             <TextBlock Text="Статус заказа"/>
                             <ComboBox x:Name="StatusCb" ItemsSource="{Binding OrderStatuses}"
-                                      SelectedItem="{Binding order.OrderStatusId}" SelectionChanged="StatusCb_SelectionChanged" Margin="5 0">
+                                      SelectedItem="{Binding order.OrderStatus}" SelectionChanged="StatusCb_SelectionChanged" Margin="5 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <ComboBoxItem Tag="{Binding Title}"
@@ -99,7 +99,7 @@
         </ListView>
         <StackPanel HorizontalAlignment="Center" Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="SaveOrderBtn" Style="{StaticResource MyButton}" Content="Сохранить" Click="SaveOrderBtn_Click"/>
-            <Button x:Name="AddProductInOrderBtn" Style="{StaticResource MyButton}" Content="Добавить"/>
+            <Button x:Name="AddProductInOrderBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddProductInOrderBtn_Click"/>
             <Button x:Name="DeleteProductInOrderBtn" Style="{StaticResource MyButton}" Content="Удалить"/>
         </StackPanel>
     </Grid>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище SessionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище PracticaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,11 +54,11 @@
         </EntityType>
         <EntityType Name="ProductsCountries">
           <Key>
-            <PropertyRef Name="SuppliersCountryId" />
-            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="SuppliersCountryId" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SuppliersCountryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -195,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductsCountries_Product1">
+        <Association Name="FK_ProductsCountries_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductsCountries" Type="Self.ProductsCountries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductsCountries_SuppliersCountry1">
+        <Association Name="FK_ProductsCountries_SuppliersCountry">
           <End Role="SuppliersCountry" Type="Self.SuppliersCountry" Multiplicity="1" />
           <End Role="ProductsCountries" Type="Self.ProductsCountries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище SessionModelContainer">
+        <EntityContainer Name="Хранилище PracticaModelContainer">
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
@@ -305,11 +305,11 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductsCountries_Product1" Association="Self.FK_ProductsCountries_Product1">
+          <AssociationSet Name="FK_ProductsCountries_Product" Association="Self.FK_ProductsCountries_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductsCountries" EntitySet="ProductsCountries" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductsCountries_SuppliersCountry1" Association="Self.FK_ProductsCountries_SuppliersCountry1">
+          <AssociationSet Name="FK_ProductsCountries_SuppliersCountry" Association="Self.FK_ProductsCountries_SuppliersCountry">
             <End Role="SuppliersCountry" EntitySet="SuppliersCountry" />
             <End Role="ProductsCountries" EntitySet="ProductsCountries" />
           </AssociationSet>
@@ -334,7 +334,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SessionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PracticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="Id" />
@@ -379,8 +379,8 @@
           <Property Name="QuantityInStock" Type="Int32" />
           <NavigationProperty Name="UnitOfMeansurement" Relationship="Self.FK_Product_UnitOfMeansurement1" FromRole="Product" ToRole="UnitOfMeansurement" />
           <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Product1" FromRole="Product" ToRole="ProductOrder" />
+          <NavigationProperty Name="ProductsCountries" Relationship="Self.FK_ProductsCountries_Product" FromRole="Product" ToRole="ProductsCountries" />
           <NavigationProperty Name="ShipmentProduct" Relationship="Self.FK_ShipmentProduct_Product" FromRole="Product" ToRole="ShipmentProduct" />
-          <NavigationProperty Name="SuppliersCountry" Relationship="Self.ProductsCountries" FromRole="Product" ToRole="SuppliersCountry" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -393,6 +393,16 @@
           <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Order" Relationship="Self.FK_ProductOrder_Order1" FromRole="ProductOrder" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductOrder_Product1" FromRole="ProductOrder" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductsCountries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SuppliersCountryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductsCountries_Product" FromRole="ProductsCountries" ToRole="Product" />
+          <NavigationProperty Name="SuppliersCountry" Relationship="Self.FK_ProductsCountries_SuppliersCountry" FromRole="ProductsCountries" ToRole="SuppliersCountry" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -428,7 +438,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ColorHex" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="Self.ProductsCountries" FromRole="SuppliersCountry" ToRole="Product" />
+          <NavigationProperty Name="ProductsCountries" Relationship="Self.FK_ProductsCountries_SuppliersCountry" FromRole="SuppliersCountry" ToRole="ProductsCountries" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -551,6 +561,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductsCountries_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductsCountries" Type="Self.ProductsCountries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsCountries">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ShipmentProduct_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ShipmentProduct" Type="Self.ShipmentProduct" Multiplicity="*" />
@@ -560,6 +582,18 @@
             </Principal>
             <Dependent Role="ShipmentProduct">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsCountries_SuppliersCountry">
+          <End Role="SuppliersCountry" Type="Self.SuppliersCountry" Multiplicity="1" />
+          <End Role="ProductsCountries" Type="Self.ProductsCountries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuppliersCountry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsCountries">
+              <PropertyRef Name="SuppliersCountryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -587,16 +621,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ProductsCountries">
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <End Role="SuppliersCountry" Type="Self.SuppliersCountry" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="ProductsSession1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PracticaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Gender" EntityType="Self.Gender" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" />
+          <EntitySet Name="ProductsCountries" EntityType="Self.ProductsCountries" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Shipment" EntityType="Self.Shipment" />
           <EntitySet Name="ShipmentProduct" EntityType="Self.ShipmentProduct" />
@@ -632,9 +663,17 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductsCountries_Product" Association="Self.FK_ProductsCountries_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductsCountries" EntitySet="ProductsCountries" />
+          </AssociationSet>
           <AssociationSet Name="FK_ShipmentProduct_Product" Association="Self.FK_ShipmentProduct_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ShipmentProduct" EntitySet="ShipmentProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsCountries_SuppliersCountry" Association="Self.FK_ProductsCountries_SuppliersCountry">
+            <End Role="SuppliersCountry" EntitySet="SuppliersCountry" />
+            <End Role="ProductsCountries" EntitySet="ProductsCountries" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role1" Association="Self.FK_User_Role1">
             <End Role="Role" EntitySet="Role" />
@@ -644,19 +683,15 @@
             <End Role="Shipment" EntitySet="Shipment" />
             <End Role="ShipmentProduct" EntitySet="ShipmentProduct" />
           </AssociationSet>
-          <AssociationSet Name="ProductsCountries" Association="Self.ProductsCountries">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="SuppliersCountry" EntitySet="SuppliersCountry" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SessionModelContainer" CdmEntityContainer="ProductsSession1Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PracticaModelContainer" CdmEntityContainer="PracticaEntities">
           <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="SessionModel.Gender">
+            <EntityTypeMapping TypeName="PracticaModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -664,7 +699,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="SessionModel.Order">
+            <EntityTypeMapping TypeName="PracticaModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -675,7 +710,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderStatus">
-            <EntityTypeMapping TypeName="SessionModel.OrderStatus">
+            <EntityTypeMapping TypeName="PracticaModel.OrderStatus">
               <MappingFragment StoreEntitySet="OrderStatus">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -683,7 +718,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="SessionModel.Product">
+            <EntityTypeMapping TypeName="PracticaModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -697,7 +732,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductOrder">
-            <EntityTypeMapping TypeName="SessionModel.ProductOrder">
+            <EntityTypeMapping TypeName="PracticaModel.ProductOrder">
               <MappingFragment StoreEntitySet="ProductOrder">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -706,8 +741,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProductsCountries">
+            <EntityTypeMapping TypeName="PracticaModel.ProductsCountries">
+              <MappingFragment StoreEntitySet="ProductsCountries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SuppliersCountryId" ColumnName="SuppliersCountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="SessionModel.Role">
+            <EntityTypeMapping TypeName="PracticaModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -715,7 +759,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shipment">
-            <EntityTypeMapping TypeName="SessionModel.Shipment">
+            <EntityTypeMapping TypeName="PracticaModel.Shipment">
               <MappingFragment StoreEntitySet="Shipment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -723,7 +767,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShipmentProduct">
-            <EntityTypeMapping TypeName="SessionModel.ShipmentProduct">
+            <EntityTypeMapping TypeName="PracticaModel.ShipmentProduct">
               <MappingFragment StoreEntitySet="ShipmentProduct">
                 <ScalarProperty Name="ShipmentId" ColumnName="ShipmentId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -732,7 +776,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SuppliersCountry">
-            <EntityTypeMapping TypeName="SessionModel.SuppliersCountry">
+            <EntityTypeMapping TypeName="PracticaModel.SuppliersCountry">
               <MappingFragment StoreEntitySet="SuppliersCountry">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -741,7 +785,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SessionModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PracticaModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -752,7 +796,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnitOfMeansurement">
-            <EntityTypeMapping TypeName="SessionModel.UnitOfMeansurement">
+            <EntityTypeMapping TypeName="PracticaModel.UnitOfMeansurement">
               <MappingFragment StoreEntitySet="UnitOfMeansurement">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -760,7 +804,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="SessionModel.User">
+            <EntityTypeMapping TypeName="PracticaModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -775,14 +819,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ProductsCountries" TypeName="SessionModel.ProductsCountries" StoreEntitySet="ProductsCountries">
-            <EndProperty Name="Product">
-              <ScalarProperty Name="Id" ColumnName="ProductId" />
-            </EndProperty>
-            <EndProperty Name="SuppliersCountry">
-              <ScalarProperty Name="Id" ColumnName="SuppliersCountryId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

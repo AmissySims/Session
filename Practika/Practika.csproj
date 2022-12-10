@@ -106,6 +106,9 @@
     <Compile Include="Components\ProductOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\ProductsCountries.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -171,7 +174,6 @@
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductsCountries.cs" />
     <Compile Include="Pages\ProductsListPage.xaml.cs">
       <DependentUpon>ProductsListPage.xaml</DependentUpon>
     </Compile>

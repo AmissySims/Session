@@ -4,30 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e5e9b2dbf3b4b95a34710a1a78cc1ca" Name="Diagram1">
-        <EntityTypeShape EntityType="SessionModel.Gender" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.Order" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.OrderStatus" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.Product" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.ProductOrder" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.Role" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.SuppliersCountry" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.UnitOfMeansurement" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SessionModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="SessionModel.FK_User_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_Order_OrderStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_Order_User" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_Order_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_ProductOrder_Order1" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_Product_UnitOfMeansurement1" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_ProductOrder_Product1" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_ShipmentProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_User_Role1" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.FK_ShipmentProduct_Shipment" ManuallyRouted="false" />
-        <AssociationConnector Association="SessionModel.ProductsCountries" ManuallyRouted="false" />
+      <Diagram DiagramId="47f9bfd5424145d9bdde324d6da014fd" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticaModel.Gender" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.Order" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.OrderStatus" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.Product" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.ProductOrder" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.ProductsCountries" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.Role" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.Shipment" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.ShipmentProduct" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.SuppliersCountry" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.UnitOfMeansurement" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PracticaModel.FK_User_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_Order_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_Order_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ProductOrder_Order1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_Product_UnitOfMeansurement1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ProductOrder_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ProductsCountries_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ShipmentProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ProductsCountries_SuppliersCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_User_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaModel.FK_ShipmentProduct_Shipment" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

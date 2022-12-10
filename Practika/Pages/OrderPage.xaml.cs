@@ -30,7 +30,6 @@ namespace Practika.Pages
         public List<User> Users { get; set; }
         public List<Product> Products { get; set; }
 
-
         public OrderPage(Order _order)
         {
             DBConnect.db.OrderStatus.Load();
@@ -81,6 +80,11 @@ namespace Practika.Pages
         }
 
         private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddProductInOrderBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
