@@ -121,5 +121,6 @@ namespace Practika.Pages
         //    CountryCb.ItemsSource = DBConnect.db.SuppliersCountry.ToList();
             
         //}
-    }
+    
 }
+
