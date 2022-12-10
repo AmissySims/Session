@@ -13,7 +13,7 @@ namespace Practika.Components
         {
             get
             {
-                if (Navigation.User.RoleId == 1) //Client
+                if (Navigation.User.RoleId == 1) 
                     return Visibility.Collapsed;
                 else
                     return Visibility.Visible;

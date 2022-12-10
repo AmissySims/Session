@@ -51,6 +51,11 @@ namespace Practika.Pages
                 AddProductBtn.Visibility = Visibility.Collapsed;
                 AllOrdersBtn.Visibility = Visibility.Collapsed;
             }
+            if (Navigation.User.RoleId == 3)
+            {
+                AddProductBtn.Visibility = Visibility.Collapsed;
+                
+            }
 
             GeneralCount.Text = DBConnect.db.Product.Count().ToString();
 
