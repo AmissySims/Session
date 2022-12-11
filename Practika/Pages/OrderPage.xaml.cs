@@ -22,7 +22,7 @@ namespace Practika.Pages
         public ObservableCollection<User> Users { get; set; }
         public ObservableCollection<Product> Products { get; set; }
         public IEnumerable<User> Customers => DBConnect.db.User.Local.Where(user => user.RoleId == 1);
-
+        public IEnumerable<User> Executors => DBConnect.db.User.Local.Where(user => user.RoleId == 3);
         public IEnumerable<ProductOrder> OrderProducts => Order.ProductOrders;
 
         public OrderPage(Order order)
@@ -94,32 +94,7 @@ namespace Practika.Pages
             MessageBox.Show("Сохранено");
         }
 
-        private void AddProductBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-            //if (ProductsList.SelectedItem != null)
-            //{
-            //    var product = ProductsList.SelectedItem as Product;
-            //    ProductOrder productOrder = new ProductOrder
-            //    {
-            //        Product = product,
-            //        Order = order
-            //    };
-            //    DBConnect.db.ProductOrder.Add(productOrder);
-            //    // DBConnect.db.SaveChanges();
-            //    MessageBox.Show("Сохранено");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Выберите продукт");
-            //}
-        }
-
-        private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void AddProductInOrderBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -153,15 +128,7 @@ namespace Practika.Pages
 
 
 
-        //private void UserExCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    order.User = UserExCb.SelectedItem as User;
-        //}
-
-        //private void UserCuCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    order.User1 = UserCuCb.SelectedItem as User;
-        //}
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propName = null) =>

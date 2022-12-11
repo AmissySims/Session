@@ -38,10 +38,13 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right">
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                            <TextBlock Text="Исполнитель" />
-                            <TextBlock x:Name="UserTb" Margin="5 0" MinWidth="100" Text="{Binding Order.User.FullName}"/>
-                           
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                            <TextBlock Text="Исполнитель"  />
+
+                            <ComboBox ItemsSource="{Binding Executors}"
+                                      DisplayMemberPath="FullName"
+                                      SelectedItem="{Binding Order.User}"/>
+
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
                             <TextBlock Text="Заказчик"  />
