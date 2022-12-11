@@ -92,6 +92,7 @@ namespace Practika.Pages
             DBConnect.db.Order.Local.Add(Order);
             DBConnect.db.SaveChanges();
             MessageBox.Show("Сохранено");
+            Navigation.NextPage(new Nav("Заказы", new AllOrdersPage()));
         }
 
         

@@ -43,7 +43,7 @@
 
                             <ComboBox ItemsSource="{Binding Executors}"
                                       DisplayMemberPath="FullName"
-                                      SelectedItem="{Binding Order.User}"/>
+                                      SelectedItem="{Binding Order.User}" Width="100"/>
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
@@ -51,7 +51,7 @@
 
                             <ComboBox ItemsSource="{Binding Customers}"
                                       DisplayMemberPath="FullName"
-                                      SelectedItem="{Binding Order.User1}"/>
+                                      SelectedItem="{Binding Order.User1}" Width="100"/>
 
                         </StackPanel>
                     </StackPanel>
