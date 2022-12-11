@@ -46,7 +46,7 @@ namespace Practika.Pages
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new Order())));
+            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(order: null)));
         }
 
         private void CreateOrderBtn_Click(object sender, RoutedEventArgs e)

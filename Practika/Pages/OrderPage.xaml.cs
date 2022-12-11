@@ -1,45 +1,82 @@
 ﻿using Practika.Components;
+using Practika.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Practika.Pages
 {
     /// <summary>
     /// Логика взаимодействия для OrderPage.xaml
     /// </summary>
-    public partial class OrderPage : Page
+    public partial class OrderPage : Page, INotifyPropertyChanged
     {
+        public Order Order { get; set; }
+        public ObservableCollection<OrderStatus> OrderStatuses { get; set; }
+        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<Product> Products { get; set; }
+        public IEnumerable<User> Customers => DBConnect.db.User.Local.Where(user => user.RoleId == 1);
+
+        public IEnumerable<ProductOrder> OrderProducts => Order.ProductOrders;
+
+        public OrderPage(Order order)
+        {
+            InitializeOrderPage();
+
+            InitializeOrder(order);
+            InitializeComponent();
+        }
 
 
-        public Order order { get; set; }
-        public List<OrderStatus> OrderStatuses { get; set; }
-        public List<User> Users { get; set; }
-        public List<Product> Products { get; set; }
+        public OrderPage(IEnumerable<Product> addedProducts)
+        {
+            InitializeOrderPage();
 
-        public OrderPage(Order _order)
+            InitializeOrder();
+            foreach (var product in addedProducts)
+                DBConnect.db.ProductOrder.Local.Add(new ProductOrder()
+                {
+                    Order = Order,
+                    Product = product,
+                    PurchasePrice = product.Cost,
+                    Quanity = 1
+                });
+
+            InitializeComponent();
+        }
+
+
+        private void InitializeOrder(Order order = null)
+        {
+            Order = order ?? new Order()
+            {
+                User = Navigation.User.RoleId == 2 ? Navigation.User : null,
+                User1 = Navigation.User.RoleId == 1 ? Navigation.User : null,
+                Date = DateTime.Now,
+                OrderStatusId = 1
+            };
+        }
+
+        private void InitializeOrderPage()
+        {
+            LoadDBTables();
+
+            Users = DBConnect.db.User.Local;
+            OrderStatuses = DBConnect.db.OrderStatus.Local;
+            Products = DBConnect.db.Product.Local;
+        }
+        private static void LoadDBTables()
         {
             DBConnect.db.OrderStatus.Load();
-            OrderStatuses = DBConnect.db.OrderStatus.Local.ToList();
             DBConnect.db.User.Load();
-            Users = DBConnect.db.User.Local.ToList();
             DBConnect.db.Product.Load();
-            Products = DBConnect.db.Product.Local.ToList();
-            order = _order;
-            InitializeComponent();
+            DBConnect.db.ProductOrder.Load();
         }
 
         private void StatusCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,7 +89,7 @@ namespace Practika.Pages
 
         private void SaveOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            DBConnect.db.Order.Local.Add(order);
+            DBConnect.db.Order.Local.Add(Order);
             DBConnect.db.SaveChanges();
             MessageBox.Show("Сохранено");
         }
@@ -86,7 +123,32 @@ namespace Practika.Pages
 
         private void AddProductInOrderBtn_Click(object sender, RoutedEventArgs e)
         {
+            SelectProductWindow selectProduct = new SelectProductWindow(OrderProducts.Select(o => o.Product));
+            selectProduct.ShowDialog();
+            if (selectProduct.DialogResult == true)
+            {
+                foreach (var product in selectProduct.SelectedProducts)
+                    DBConnect.db.ProductOrder.Local.Add(new ProductOrder()
+                    {
+                        Order = Order,
+                        Product = product,
+                        PurchasePrice = product.Cost,
+                        Quanity = 1
+                    });
+                OnPropertyChanged(nameof(OrderProducts));
+            }
+        }
 
+        private void DeleteProductInOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            IEnumerable<ProductOrder> orderProducts = ProductsList.SelectedItems.Cast<ProductOrder>();
+            if (orderProducts == null)
+                return;
+
+            foreach (var orderProduct in orderProducts)
+                DBConnect.db.ProductOrder.Local.Remove(orderProduct);
+            DBConnect.db.SaveChanges();
+            OnPropertyChanged(nameof(OrderProducts));
         }
 
 
@@ -100,5 +162,9 @@ namespace Practika.Pages
         //{
         //    order.User1 = UserCuCb.SelectedItem as User;
         //}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string propName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }

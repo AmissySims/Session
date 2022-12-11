@@ -17,7 +17,7 @@ namespace Practika.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SuppliersCountry()
         {
-            this.ProductsCountries = new HashSet<ProductsCountries>();
+            this.Product = new HashSet<Product>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace Practika.Components
         public string ColorHex { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductsCountries> ProductsCountries { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

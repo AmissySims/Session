@@ -1,6 +1,7 @@
 ﻿using Practika.Components;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,11 @@ namespace Practika.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
-        
+
         public AuthPage()
         {
+            LoadDBTables();
+
             InitializeComponent();
             if (Properties.Settings.Default.Login != null)
                 LoginTb.Text = Properties.Settings.Default.Login;
@@ -32,10 +35,16 @@ namespace Practika.Pages
                 PasswordTb.Password = Properties.Settings.Default.Password;
         }
 
+        private void LoadDBTables()
+        {
+            DBConnect.db.User.Load();
+            DBConnect.db.Role.Load();
+        }
+
         private void EntrBtn_Click(object sender, RoutedEventArgs e)
         {
             int countAuto = Properties.Settings.Default.CountAuth;
-            User user = DBConnect.db.User.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Password.Trim());
+            User user = DBConnect.db.User.Local.FirstOrDefault(x => x.Login == LoginTb.Text.Trim() && x.Password == PasswordTb.Password.Trim());
             if (countAuto < 3)
             {
                 
@@ -53,8 +62,8 @@ namespace Practika.Pages
 
                     if (SaveCb.IsChecked == true)
                     {
-                        Properties.Settings.Default.Login = LoginTb.Text;
-                        Properties.Settings.Default.Password = PasswordTb.Password;
+                        Properties.Settings.Default.Login = LoginTb.Text.Trim();
+                        Properties.Settings.Default.Password = PasswordTb.Password.Trim();
                         Properties.Settings.Default.Save();
                     }
                     else

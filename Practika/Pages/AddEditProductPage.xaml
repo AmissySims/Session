@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Practika.Pages"
+      xmlns:database="clr-namespace:Practika.Components"
       mc:Ignorable="d" 
       DataContext="{Binding RelativeSource={RelativeSource Self}}" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -12,32 +12,32 @@
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Vertical" >
-                <Image x:Name="ProductImage" Source="{Binding product.Photo}" Width="180" Height="180"/>
+                <Image x:Name="ProductImage" Source="{Binding Product.Photo}" Width="180" Height="180"/>
                 <Button x:Name="AddImageBtn" Style="{StaticResource MyButton}" Content="Добавить изображение" Click="AddImageBtn_Click" />
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock  Text="Название"/>
-                    <TextBox Text="{Binding product.Title}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding Product.Title}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock  Text="Цена"/>
-                    <TextBox Text="{Binding product.Cost}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding Product.Cost}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="Описание"/>
-                    <TextBox Text="{Binding product.Description}" Width="200" Height="20" Margin="5"/>
+                    <TextBox Text="{Binding Product.Description}" Width="200" Height="20" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock  Text="Дата"/>
-                    <TextBox Text="{Binding product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
+                    <TextBox Text="{Binding Product.DateOfAddition}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBlock Text="Ед. измерения" Margin="5 0"/>
                     <ComboBox
                         x:Name="EditUnitOfMeansurement"
                         ItemsSource="{Binding MeasureUnits}"
-                        SelectedIndex="{Binding product.UnitOfMeansurementId}"
+                        SelectedIndex="{Binding Product.UnitOfMeansurementId}"
                         SelectionChanged="FilterProduct_SelectionChanged_1" Margin="5" Height="20">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -49,13 +49,12 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock  Text="Количество" Margin="5 0"/>
-                    <TextBox Text="{Binding product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
+                    <TextBox Text="{Binding Product.QuantityInStock}" Height="20" Width="200" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="5 0">
                     <StackPanel>
                         <Label Content="Страны продукта"/>
-                        <ListView x:Name="CountriesList" ItemsSource="{Binding Path=SuppliersCountriis}" d:ItemsSource="{d:SampleData ItemCount=5}" >
-
+                        <ListView x:Name="CountriesList" ItemsSource="{Binding ProductCountries}" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True"/>
@@ -71,10 +70,10 @@
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="AddCountryBtn" Style="{StaticResource MyButton}" Content="Добавить" Click="AddCountryBtn_Click"/>
                         <Button x:Name="DeleteCountryBtn" Style="{StaticResource MyButton}" Content="Удалить" Click="DeleteCountryBtn_Click"/>
-                        <ComboBox ItemsSource="{Binding SuppliersCountriisAll}" SelectedIndex="0" Width="100" Margin="10 0" x:Name="CountryListCb" SelectionChanged="CountryListCb_SelectionChanged">
+                        <ComboBox ItemsSource="{Binding OtherCountries}" SelectedIndex="0" Width="100" Margin="10 0" x:Name="CountryListCb" SelectionChanged="CountryListCb_SelectionChanged">
                             <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <ComboBoxItem Tag="{Binding Title}" Content="{Binding Title}"/>
+                                <DataTemplate DataType="{x:Type database:SuppliersCountry}">
+                                    <TextBlock Tag="{Binding Title}" Text="{Binding Title}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>

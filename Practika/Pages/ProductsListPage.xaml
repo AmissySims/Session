@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Practika.Pages"
+      xmlns:database="clr-namespace:Practika.Components"
       mc:Ignorable="d" 
       Name="Root"
       DataContext="{Binding RelativeSource={RelativeSource Self}}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
@@ -57,7 +57,7 @@
         </StackPanel>
         <ListView Grid.Row="1" x:Name="ProductsList" d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding Products}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate DataType="{x:Type database:Product}">
                     <Border BorderBrush="#FFD1EEFC" Padding="3" Margin="3" BorderThickness="2" Background="{Binding ColorDis}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -72,15 +72,15 @@
                             <Image Source="{Binding Photo}" Grid.RowSpan="2" Height="NaN" Margin="0,4,0,3"/>
                             <TextBlock Text="{Binding Title}" 
                                        Grid.Column="1" HorizontalAlignment="Center"/>
-                            <ListBox Grid.Row="2" ItemsSource="{Binding ProductsCountries}">
+                            <ListBox Grid.Row="2" ItemsSource="{Binding SuppliersCountry}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True"/>
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>
                                 <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding SuppliersCountry.Title}" Background="{Binding Brush}"/>
+                                    <DataTemplate DataType="{x:Type database:SuppliersCountry}">
+                                        <TextBlock Text="{Binding Title}" Background="{Binding Brush}"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>

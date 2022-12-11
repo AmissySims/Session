@@ -1,20 +1,10 @@
 ﻿using Practika.Components;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Practika.Pages
 {
@@ -57,7 +47,7 @@ namespace Practika.Pages
                 
             }
 
-            GeneralCount.Text = DBConnect.db.Product.Count().ToString();
+            GeneralCount.Text = DBConnect.db.Product.Local.Count().ToString();
 
         }
         private void Refresh()
@@ -209,12 +199,12 @@ namespace Practika.Pages
         
         private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new Nav("Добавление продукта", new AddEditProductPage(new Product())));
+            Navigation.NextPage(new Nav("Добавление продукта", new AddEditProductPage()));
         }
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(new Order())));
+            Navigation.NextPage(new Nav("Оформление заказа", new OrderPage(ProductsList.SelectedItems.Cast<Product>())));
         }
 
         private void AllOrdersBtn_Click(object sender, RoutedEventArgs e)

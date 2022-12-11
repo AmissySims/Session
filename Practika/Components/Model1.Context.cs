@@ -30,7 +30,6 @@ namespace Practika.Components
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductOrder> ProductOrder { get; set; }
-        public virtual DbSet<ProductsCountries> ProductsCountries { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Shipment> Shipment { get; set; }
         public virtual DbSet<ShipmentProduct> ShipmentProduct { get; set; }
