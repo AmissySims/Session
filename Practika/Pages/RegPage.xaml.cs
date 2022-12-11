@@ -112,6 +112,7 @@ namespace Practika.Pages
                 }
                 
             }
+
             DBConnect.db.SaveChanges();
             Navigation.BackPage();
         }
