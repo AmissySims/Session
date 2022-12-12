@@ -56,7 +56,7 @@ namespace Practika.Pages
         {
             Order = order ?? new Order()
             {
-                User = Navigation.User.RoleId == 2 ? Navigation.User : null,
+                User = Navigation.User.RoleId == 3 ? Navigation.User : null,
                 User1 = Navigation.User.RoleId == 1 ? Navigation.User : null,
                 Date = DateTime.Now,
                 OrderStatusId = 1
