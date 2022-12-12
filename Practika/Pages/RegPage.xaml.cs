@@ -46,7 +46,12 @@ namespace Practika.Pages
             var check = DBConnect.db.User.Where(x => x.Login == login && x.Email == email && x.Phone == phone).FirstOrDefault();
             if (check == null)
             {
-                if (password.Length > 5 && password.Any(ch => Char.IsUpper(ch)) && password.Any(ch => Char.IsLower(ch)) && password.Any(ch => Char.IsDigit(ch)) && password.Any(ch => chars.Contains(ch)))
+                
+                //if (password.Length > 5 && password.Any(ch => Char.IsUpper(ch)) && password.Any(ch => Char.IsLower(ch)) && password.Any(ch => Char.IsDigit(ch)) && password.Any(ch => chars.Contains(ch)))
+                if (password.Length > 5
+                    && password.Any(ch => Char.IsUpper(ch))
+                    && password.Any(ch => Char.IsDigit(ch))
+                    && password.Any(ch => chars.Contains(ch)))
                 {
                     DBConnect.db.User.Add(new User
                     {
@@ -66,7 +71,7 @@ namespace Practika.Pages
                     Navigation.BackPage();
                 }
 
-                else 
+                else
                 {
                     MessageBox.Show("Проверьте на правильность заполнения.\n" +
                         "Пароль должен содержать 6 символов, хотя бы 1 прописную букву," +
