@@ -43,7 +43,7 @@ namespace Practika.Pages
             string email = EmailTb.Text.Trim();
 
             char[] chars = { '!', '@', '#', '$', '%', '^' };
-            var check = DBConnect.db.User.Where(x => x.Login == login).FirstOrDefault();
+            var check = DBConnect.db.User.Where(x => x.Login == login && x.Email == email && x.Phone == phone).FirstOrDefault();
             if (check == null)
             {
                 if (password.Length > 5 && password.Any(ch => Char.IsUpper(ch)) && password.Any(ch => Char.IsLower(ch)) && password.Any(ch => Char.IsDigit(ch)) && password.Any(ch => chars.Contains(ch)))
@@ -61,14 +61,15 @@ namespace Practika.Pages
                         RoleId = 1
                     });
                     
-                    MessageBox.Show("Сохранено!");
+                    MessageBox.Show("Регистрация прошла успешно");
                     DBConnect.db.SaveChanges();
                     Navigation.BackPage();
                 }
-                else
+
+                else 
                 {
                     MessageBox.Show("Проверьте на правильность заполнения.\n" +
-                        " Пароль должен содержать 6 символов, хотя бы 1 прописную букву," +
+                        "Пароль должен содержать 6 символов, хотя бы 1 прописную букву," +
                         " хотя бы 1 цифру и хотя бы 1 из этих символов ! @ # $ % ^");
                 }
             }
