@@ -15,9 +15,9 @@
             <RowDefinition Height="363*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,5">
-            <TextBlock Text="Фильтр по статусу"/>
-            <ComboBox x:Name="OrderCb" Margin="5 0" Width="50" Height="20" SelectedIndex="0" 
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Фильтр по статусу" Margin="5 0" VerticalAlignment="Center"/>
+            <ComboBox x:Name="OrderCb" Margin="5 0" Width="100" Height="30" SelectedIndex="0" 
                       SelectionChanged="OrderCb_SelectionChanged">
                 <ComboBoxItem Tag="1" Content="Все"/>
                 <ComboBoxItem Tag="2" Content="Новый"/>
